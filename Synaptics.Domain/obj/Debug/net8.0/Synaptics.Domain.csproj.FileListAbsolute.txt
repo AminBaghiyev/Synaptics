@@ -1,0 +1,13 @@
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Domain\bin\Debug\net8.0\Synaptics.Domain.deps.json
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Domain\bin\Debug\net8.0\Synaptics.Domain.dll
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Domain\bin\Debug\net8.0\Synaptics.Domain.pdb
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Domain\obj\Debug\net8.0\Synaptics.Domain.csproj.AssemblyReference.cache
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Domain\obj\Debug\net8.0\Synaptics.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Domain\obj\Debug\net8.0\Synaptics.Domain.AssemblyInfoInputs.cache
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Domain\obj\Debug\net8.0\Synaptics.Domain.AssemblyInfo.cs
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Domain\obj\Debug\net8.0\Synaptics.Domain.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Domain\obj\Debug\net8.0\Synaptics.Domain.sourcelink.json
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Domain\obj\Debug\net8.0\Synaptics.Domain.dll
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Domain\obj\Debug\net8.0\refint\Synaptics.Domain.dll
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Domain\obj\Debug\net8.0\Synaptics.Domain.pdb
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Domain\obj\Debug\net8.0\ref\Synaptics.Domain.dll

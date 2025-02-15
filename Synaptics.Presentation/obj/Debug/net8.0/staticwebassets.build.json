@@ -1,0 +1,743 @@
+{
+  "Version": 1,
+  "Hash": "Xcrh0ZCYR57xaT7B2+NaSfiV07Ru72qAgxA+o0+VKb4=",
+  "Source": "Synaptics.Presentation",
+  "BasePath": "_content/Synaptics.Presentation",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Synaptics.Presentation\\wwwroot",
+      "Source": "Synaptics.Presentation",
+      "ContentRoot": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\",
+      "BasePath": "_content/Synaptics.Presentation",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\cover_photos\\107f7499-5c36-4aba-9381-1d03e3777f4a.jpg",
+      "SourceId": "Synaptics.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\",
+      "BasePath": "_content/Synaptics.Presentation",
+      "RelativePath": "uploads/cover_photos/107f7499-5c36-4aba-9381-1d03e3777f4a#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "bvlz8l8kzi",
+      "Integrity": "iaoZgYy8yRCyTERwOhDDPaufyBxskm34ol221nlDzqg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\cover_photos\\107f7499-5c36-4aba-9381-1d03e3777f4a.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\cover_photos\\4b2228e0-fa17-4d9a-8d6e-bff9f293b97dimages.jpg",
+      "SourceId": "Synaptics.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\",
+      "BasePath": "_content/Synaptics.Presentation",
+      "RelativePath": "uploads/cover_photos/4b2228e0-fa17-4d9a-8d6e-bff9f293b97dimages#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "8cu2vmzn47",
+      "Integrity": "6HIyvlG5Njr3MklKUzcnSd5C/UJiInambLYY1b2H9lk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\cover_photos\\4b2228e0-fa17-4d9a-8d6e-bff9f293b97dimages.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\cover_photos\\9e64f3d7-7bb3-4ada-a2ad-51a15dc7691f.jpg",
+      "SourceId": "Synaptics.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\",
+      "BasePath": "_content/Synaptics.Presentation",
+      "RelativePath": "uploads/cover_photos/9e64f3d7-7bb3-4ada-a2ad-51a15dc7691f#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "7t7yikyq1i",
+      "Integrity": "Cx72MYE0nKVRWM6tP9ZxFXl8JsN07nqKhT68aAW2DPY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\cover_photos\\9e64f3d7-7bb3-4ada-a2ad-51a15dc7691f.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\06a5ea8d-1f96-43ee-a2fb-2556ef30067b86059.jpg",
+      "SourceId": "Synaptics.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\",
+      "BasePath": "_content/Synaptics.Presentation",
+      "RelativePath": "uploads/profile_photos/06a5ea8d-1f96-43ee-a2fb-2556ef30067b86059#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "74moelw6lm",
+      "Integrity": "90f8N32OFxl+/6nf7fRQ3q2Su8xSM7Owf2wid6G9H0A=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\profile_photos\\06a5ea8d-1f96-43ee-a2fb-2556ef30067b86059.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\08187fa3-9bcf-47c2-bb31-8adcd8020f8786059.jpg",
+      "SourceId": "Synaptics.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\",
+      "BasePath": "_content/Synaptics.Presentation",
+      "RelativePath": "uploads/profile_photos/08187fa3-9bcf-47c2-bb31-8adcd8020f8786059#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "74moelw6lm",
+      "Integrity": "90f8N32OFxl+/6nf7fRQ3q2Su8xSM7Owf2wid6G9H0A=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\profile_photos\\08187fa3-9bcf-47c2-bb31-8adcd8020f8786059.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\1961767c-c451-4268-9ed5-b25115c507d5.jpg",
+      "SourceId": "Synaptics.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\",
+      "BasePath": "_content/Synaptics.Presentation",
+      "RelativePath": "uploads/profile_photos/1961767c-c451-4268-9ed5-b25115c507d5#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "gt5n1h980n",
+      "Integrity": "NJKE9M18w29AqHUwufy2lP1vFkdbJ3+SubwUCfP6Mpo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\profile_photos\\1961767c-c451-4268-9ed5-b25115c507d5.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\ff2341e6-1350-46d1-9c67-0a7f36e798ed.png",
+      "SourceId": "Synaptics.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\",
+      "BasePath": "_content/Synaptics.Presentation",
+      "RelativePath": "uploads/profile_photos/ff2341e6-1350-46d1-9c67-0a7f36e798ed#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vsmlg307wf",
+      "Integrity": "Ud12kIzLke2LhaBP0yPzLF+l0+PPVZhL5wUYraI0v6A=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\profile_photos\\ff2341e6-1350-46d1-9c67-0a7f36e798ed.png"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "uploads/cover_photos/107f7499-5c36-4aba-9381-1d03e3777f4a.bvlz8l8kzi.jpg",
+      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\cover_photos\\107f7499-5c36-4aba-9381-1d03e3777f4a.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22459"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iaoZgYy8yRCyTERwOhDDPaufyBxskm34ol221nlDzqg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 13:14:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "bvlz8l8kzi"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/cover_photos/107f7499-5c36-4aba-9381-1d03e3777f4a.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-iaoZgYy8yRCyTERwOhDDPaufyBxskm34ol221nlDzqg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cover_photos/107f7499-5c36-4aba-9381-1d03e3777f4a.jpg",
+      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\cover_photos\\107f7499-5c36-4aba-9381-1d03e3777f4a.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22459"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iaoZgYy8yRCyTERwOhDDPaufyBxskm34ol221nlDzqg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 13:14:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-iaoZgYy8yRCyTERwOhDDPaufyBxskm34ol221nlDzqg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cover_photos/4b2228e0-fa17-4d9a-8d6e-bff9f293b97dimages.8cu2vmzn47.jpg",
+      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\cover_photos\\4b2228e0-fa17-4d9a-8d6e-bff9f293b97dimages.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3205"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6HIyvlG5Njr3MklKUzcnSd5C/UJiInambLYY1b2H9lk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 13:11:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8cu2vmzn47"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/cover_photos/4b2228e0-fa17-4d9a-8d6e-bff9f293b97dimages.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6HIyvlG5Njr3MklKUzcnSd5C/UJiInambLYY1b2H9lk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cover_photos/4b2228e0-fa17-4d9a-8d6e-bff9f293b97dimages.jpg",
+      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\cover_photos\\4b2228e0-fa17-4d9a-8d6e-bff9f293b97dimages.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3205"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6HIyvlG5Njr3MklKUzcnSd5C/UJiInambLYY1b2H9lk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 13:11:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6HIyvlG5Njr3MklKUzcnSd5C/UJiInambLYY1b2H9lk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cover_photos/9e64f3d7-7bb3-4ada-a2ad-51a15dc7691f.7t7yikyq1i.jpg",
+      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\cover_photos\\9e64f3d7-7bb3-4ada-a2ad-51a15dc7691f.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "39163"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Cx72MYE0nKVRWM6tP9ZxFXl8JsN07nqKhT68aAW2DPY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 15 Feb 2025 14:15:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7t7yikyq1i"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/cover_photos/9e64f3d7-7bb3-4ada-a2ad-51a15dc7691f.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Cx72MYE0nKVRWM6tP9ZxFXl8JsN07nqKhT68aAW2DPY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cover_photos/9e64f3d7-7bb3-4ada-a2ad-51a15dc7691f.jpg",
+      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\cover_photos\\9e64f3d7-7bb3-4ada-a2ad-51a15dc7691f.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "39163"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Cx72MYE0nKVRWM6tP9ZxFXl8JsN07nqKhT68aAW2DPY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 15 Feb 2025 14:15:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Cx72MYE0nKVRWM6tP9ZxFXl8JsN07nqKhT68aAW2DPY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/profile_photos/06a5ea8d-1f96-43ee-a2fb-2556ef30067b86059.74moelw6lm.jpg",
+      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\06a5ea8d-1f96-43ee-a2fb-2556ef30067b86059.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "211886"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"90f8N32OFxl+/6nf7fRQ3q2Su8xSM7Owf2wid6G9H0A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 13:11:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "74moelw6lm"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/profile_photos/06a5ea8d-1f96-43ee-a2fb-2556ef30067b86059.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-90f8N32OFxl+/6nf7fRQ3q2Su8xSM7Owf2wid6G9H0A="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/profile_photos/06a5ea8d-1f96-43ee-a2fb-2556ef30067b86059.jpg",
+      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\06a5ea8d-1f96-43ee-a2fb-2556ef30067b86059.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "211886"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"90f8N32OFxl+/6nf7fRQ3q2Su8xSM7Owf2wid6G9H0A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 13:11:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-90f8N32OFxl+/6nf7fRQ3q2Su8xSM7Owf2wid6G9H0A="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/profile_photos/08187fa3-9bcf-47c2-bb31-8adcd8020f8786059.74moelw6lm.jpg",
+      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\08187fa3-9bcf-47c2-bb31-8adcd8020f8786059.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "211886"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"90f8N32OFxl+/6nf7fRQ3q2Su8xSM7Owf2wid6G9H0A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 11:25:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "74moelw6lm"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/profile_photos/08187fa3-9bcf-47c2-bb31-8adcd8020f8786059.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-90f8N32OFxl+/6nf7fRQ3q2Su8xSM7Owf2wid6G9H0A="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/profile_photos/08187fa3-9bcf-47c2-bb31-8adcd8020f8786059.jpg",
+      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\08187fa3-9bcf-47c2-bb31-8adcd8020f8786059.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "211886"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"90f8N32OFxl+/6nf7fRQ3q2Su8xSM7Owf2wid6G9H0A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 11:25:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-90f8N32OFxl+/6nf7fRQ3q2Su8xSM7Owf2wid6G9H0A="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/profile_photos/1961767c-c451-4268-9ed5-b25115c507d5.gt5n1h980n.jpg",
+      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\1961767c-c451-4268-9ed5-b25115c507d5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7323"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NJKE9M18w29AqHUwufy2lP1vFkdbJ3+SubwUCfP6Mpo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 13:14:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "gt5n1h980n"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/profile_photos/1961767c-c451-4268-9ed5-b25115c507d5.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-NJKE9M18w29AqHUwufy2lP1vFkdbJ3+SubwUCfP6Mpo="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/profile_photos/1961767c-c451-4268-9ed5-b25115c507d5.jpg",
+      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\1961767c-c451-4268-9ed5-b25115c507d5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7323"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NJKE9M18w29AqHUwufy2lP1vFkdbJ3+SubwUCfP6Mpo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 13:14:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-NJKE9M18w29AqHUwufy2lP1vFkdbJ3+SubwUCfP6Mpo="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/profile_photos/ff2341e6-1350-46d1-9c67-0a7f36e798ed.png",
+      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\ff2341e6-1350-46d1-9c67-0a7f36e798ed.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130377"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Ud12kIzLke2LhaBP0yPzLF+l0+PPVZhL5wUYraI0v6A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 15 Feb 2025 13:58:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Ud12kIzLke2LhaBP0yPzLF+l0+PPVZhL5wUYraI0v6A="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/profile_photos/ff2341e6-1350-46d1-9c67-0a7f36e798ed.vsmlg307wf.png",
+      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\ff2341e6-1350-46d1-9c67-0a7f36e798ed.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130377"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Ud12kIzLke2LhaBP0yPzLF+l0+PPVZhL5wUYraI0v6A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 15 Feb 2025 13:58:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vsmlg307wf"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/profile_photos/ff2341e6-1350-46d1-9c67-0a7f36e798ed.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Ud12kIzLke2LhaBP0yPzLF+l0+PPVZhL5wUYraI0v6A="
+        }
+      ]
+    }
+  ]
+}

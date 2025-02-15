@@ -1,0 +1,16 @@
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Application\bin\Debug\net8.0\Synaptics.Application.deps.json
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Application\bin\Debug\net8.0\Synaptics.Application.dll
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Application\bin\Debug\net8.0\Synaptics.Application.pdb
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Application\bin\Debug\net8.0\Synaptics.Domain.dll
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Application\bin\Debug\net8.0\Synaptics.Domain.pdb
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Application\obj\Debug\net8.0\Synaptics.Application.csproj.AssemblyReference.cache
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Application\obj\Debug\net8.0\Synaptics.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Application\obj\Debug\net8.0\Synaptics.Application.AssemblyInfoInputs.cache
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Application\obj\Debug\net8.0\Synaptics.Application.AssemblyInfo.cs
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Application\obj\Debug\net8.0\Synaptics.Application.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Application\obj\Debug\net8.0\Synaptics.Application.sourcelink.json
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Application\obj\Debug\net8.0\Synaptic.217D6F12.Up2Date
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Application\obj\Debug\net8.0\Synaptics.Application.dll
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Application\obj\Debug\net8.0\refint\Synaptics.Application.dll
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Application\obj\Debug\net8.0\Synaptics.Application.pdb
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Application\obj\Debug\net8.0\ref\Synaptics.Application.dll

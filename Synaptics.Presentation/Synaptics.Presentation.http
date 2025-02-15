@@ -1,0 +1,6 @@
+@Synaptics.Presentation_HostAddress = http://localhost:5030
+
+GET {{Synaptics.Presentation_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
