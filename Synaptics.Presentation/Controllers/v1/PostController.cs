@@ -3,11 +3,14 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Synaptics.Application.Commands.Post.CreatePost;
 using Synaptics.Application.Commands.Post.HardDeletePost;
+using Synaptics.Application.Commands.Post.LikePost;
 using Synaptics.Application.Commands.Post.RecoverPost;
 using Synaptics.Application.Commands.Post.SoftDeletePost;
+using Synaptics.Application.Commands.Post.UnlikePost;
 using Synaptics.Application.Commands.Post.UpdatePost;
 using Synaptics.Application.DTOs;
 using Synaptics.Application.Exceptions.Base;
+using Synaptics.Application.Queries.Post.LikesOfPost;
 using Synaptics.Application.Queries.Post.PostForUpdate;
 using Synaptics.Application.Queries.Post.PostOfUser;
 using Synaptics.Application.Queries.Post.PostsOfCurrentUser;
@@ -84,6 +87,59 @@ public class PostController : ControllerBase
         try
         {
             return Ok(await _mediator.Send(new PostOfUserCommand { UserName = username, Id = id}));
+        }
+        catch (ExternalException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+        }
+    }
+
+    [HttpGet("{username}/{id}/likes")]
+    public async Task<IActionResult> LikesOfPost(string username, long id, [FromQuery] int page)
+    {
+        try
+        {
+            return Ok(await _mediator.Send(new LikesOfPostCommand { UserName = username, PostId = id, Page = page }));
+        }
+        catch (ExternalException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+        }
+    }
+
+    [HttpPost("{username}/{id}/like")]
+    public async Task<IActionResult> LikePost(string username, long id)
+    {
+        try
+        {
+            await _mediator.Send(new LikePostCommand { UserName = username, PostId = id });
+            return Ok();
+        }
+        catch (ExternalException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+        }
+    }
+
+    [HttpPost("{username}/{id}/unlike")]
+    public async Task<IActionResult> UnlikePost(string username, long id)
+    {
+        try
+        {
+            await _mediator.Send(new UnlikePostCommand { UserName = username, PostId = id });
+            return Ok();
         }
         catch (ExternalException ex)
         {

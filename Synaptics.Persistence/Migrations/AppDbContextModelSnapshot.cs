@@ -308,6 +308,26 @@ namespace Synaptics.Persistence.Migrations
                     b.ToTable("Posts");
                 });
 
+            modelBuilder.Entity("Synaptics.Domain.Entities.PostLike", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("text");
+
+                    b.Property<long>("PostId")
+                        .HasColumnType("BIGINT");
+
+                    b.Property<DateTime>("LikedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.HasKey("UserId", "PostId");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("PostLikes");
+                });
+
             modelBuilder.Entity("Synaptics.Domain.Entities.UserRelation", b =>
                 {
                     b.Property<string>("FollowerId")
@@ -388,6 +408,25 @@ namespace Synaptics.Persistence.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Synaptics.Domain.Entities.PostLike", b =>
+                {
+                    b.HasOne("Synaptics.Domain.Entities.Post", "Post")
+                        .WithMany("Likes")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Synaptics.Domain.Entities.AppUser", "User")
+                        .WithMany("PostsLike")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Post");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Synaptics.Domain.Entities.UserRelation", b =>
                 {
                     b.HasOne("Synaptics.Domain.Entities.AppUser", "Follower")
@@ -414,6 +453,13 @@ namespace Synaptics.Persistence.Migrations
                     b.Navigation("Following");
 
                     b.Navigation("Posts");
+
+                    b.Navigation("PostsLike");
+                });
+
+            modelBuilder.Entity("Synaptics.Domain.Entities.Post", b =>
+                {
+                    b.Navigation("Likes");
                 });
 #pragma warning restore 612, 618
         }

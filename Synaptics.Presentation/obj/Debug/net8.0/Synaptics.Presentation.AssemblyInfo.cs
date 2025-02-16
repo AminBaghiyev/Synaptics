@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Synaptics.Presentation")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d3308f824c5d19037183ffaad81cad90ad222ed")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ea97425ebe8453941724d350af1d9241177e9c5")]
 [assembly: System.Reflection.AssemblyProductAttribute("Synaptics.Presentation")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Synaptics.Presentation")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

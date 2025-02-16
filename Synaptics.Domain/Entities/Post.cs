@@ -12,4 +12,5 @@ public class Post : BaseEntity
     public long ShareCount { get; set; }
     public string UserId { get; set; }
     public AppUser User { get; set; }
+    public ICollection<PostLike> Likes { get; set; }
 }

@@ -53,6 +53,15 @@ public class UserRelationRepository : IUserRelationRepository
         return query.SingleOrDefaultAsync(predicate);
     }
 
+    public async Task<bool> IsFriendAsync(string firstUserId, string secondUserId)
+    {
+        int friendCount = await Table.CountAsync(e =>
+            (e.FollowerId == firstUserId && e.FollowingId == secondUserId) ||
+            (e.FollowerId == secondUserId && e.FollowingId == firstUserId));
+
+        return friendCount == 2;
+    }
+
     public async Task CreateAsync(UserRelation entity)
     {
         entity.FollowedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc);

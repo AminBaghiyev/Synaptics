@@ -75,6 +75,74 @@
   },
   {
     "ContainingType": "Synaptics.Presentation.Controllers.v1.PostController",
+    "Method": "LikePost",
+    "RelativePath": "api/v1/Post/{username}/{id}/like",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Synaptics.Presentation.Controllers.v1.PostController",
+    "Method": "LikesOfPost",
+    "RelativePath": "api/v1/Post/{username}/{id}/likes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      },
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Synaptics.Presentation.Controllers.v1.PostController",
+    "Method": "UnlikePost",
+    "RelativePath": "api/v1/Post/{username}/{id}/unlike",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Synaptics.Presentation.Controllers.v1.PostController",
     "Method": "MyPosts",
     "RelativePath": "api/v1/Post/my",
     "HttpMethod": "GET",
