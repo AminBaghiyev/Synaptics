@@ -12,4 +12,5 @@ public class AppUser : IdentityUser
     public Gender Gender { get; set; }
     public string Biography { get; set; }
     public string SelfDescription { get; set; }
+    public ICollection<Post> Posts { get; set; }
 }

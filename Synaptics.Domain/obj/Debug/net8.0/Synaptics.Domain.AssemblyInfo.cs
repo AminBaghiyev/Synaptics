@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Synaptics.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16be731518f10b89937fed39330bf1a74acb9962")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bf23449427f87ced85dd925792284486f3880f74")]
 [assembly: System.Reflection.AssemblyProductAttribute("Synaptics.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Synaptics.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
