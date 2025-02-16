@@ -12,6 +12,11 @@ using Synaptics.Application.Exceptions.Base;
 using Synaptics.Application.Commands.AppUser.ChangeAppUserInfo;
 using Synaptics.Application.Queries.AppUser.GetAppUserProfile;
 using Synaptics.Application.Queries.AppUser.GetAppUserInfo;
+using Synaptics.Application.Commands.UserRelation.FollowUser;
+using Synaptics.Application.Commands.UserRelation.UnfollowUser;
+using Synaptics.Application.Commands.UserRelation.RemoveFollower;
+using Synaptics.Application.Queries.UserRelation.Followers;
+using Synaptics.Application.Queries.UserRelation.Followings;
 
 namespace Synaptics.Presentation.Controllers.v1;
 
@@ -50,6 +55,40 @@ public class UserController : ControllerBase
         try
         {
             return Ok(await _mediator.Send(new GetAppUserProfileCommand { UserName = username }));
+        }
+        catch (ExternalException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+        }
+    }
+
+    [HttpGet("{username}/followers")]
+    public async Task<IActionResult> UserFollowers([FromRoute] string username, [FromQuery] int page)
+    {
+        try
+        {
+            return Ok(await _mediator.Send(new FollowersCommand { UserName = username, Page = page }));
+        }
+        catch (ExternalException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+        }
+    }
+
+    [HttpGet("{username}/followings")]
+    public async Task<IActionResult> UserFollowings([FromRoute] string username, [FromQuery] int page)
+    {
+        try
+        {
+            return Ok(await _mediator.Send(new FollowingsCommand { UserName = username, Page = page }));
         }
         catch (ExternalException ex)
         {
@@ -170,6 +209,60 @@ public class UserController : ControllerBase
         try
         {
             await _mediator.Send(new ChangeAppUserInfoCommand { Info = dto });
+            return Ok();
+        }
+        catch (ExternalException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+        }
+    }
+
+    [HttpPost("{username}/follow")]
+    public async Task<IActionResult> FollowUser([FromRoute] string username)
+    {
+        try
+        {
+            await _mediator.Send(new FollowUserCommand { FollowTo = username });
+            return Ok();
+        }
+        catch (ExternalException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+        }
+    }
+
+    [HttpPost("{username}/unfollow")]
+    public async Task<IActionResult> UnfollowUser([FromRoute] string username)
+    {
+        try
+        {
+            await _mediator.Send(new UnfollowUserCommand { UnfollowTo = username });
+            return Ok();
+        }
+        catch (ExternalException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+        }
+    }
+
+    [HttpPost("{username}/removefollow")]
+    public async Task<IActionResult> RemoveFollower([FromRoute] string username)
+    {
+        try
+        {
+            await _mediator.Send(new RemoveFollowerCommand { Follower = username });
             return Ok();
         }
         catch (ExternalException ex)

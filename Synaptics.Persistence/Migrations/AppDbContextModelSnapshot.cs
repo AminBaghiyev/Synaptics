@@ -308,6 +308,24 @@ namespace Synaptics.Persistence.Migrations
                     b.ToTable("Posts");
                 });
 
+            modelBuilder.Entity("Synaptics.Domain.Entities.UserRelation", b =>
+                {
+                    b.Property<string>("FollowerId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("FollowingId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("FollowedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("FollowerId", "FollowingId");
+
+                    b.HasIndex("FollowingId");
+
+                    b.ToTable("UserRelations");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -370,8 +388,31 @@ namespace Synaptics.Persistence.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Synaptics.Domain.Entities.UserRelation", b =>
+                {
+                    b.HasOne("Synaptics.Domain.Entities.AppUser", "Follower")
+                        .WithMany("Following")
+                        .HasForeignKey("FollowerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Synaptics.Domain.Entities.AppUser", "Following")
+                        .WithMany("Followers")
+                        .HasForeignKey("FollowingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Follower");
+
+                    b.Navigation("Following");
+                });
+
             modelBuilder.Entity("Synaptics.Domain.Entities.AppUser", b =>
                 {
+                    b.Navigation("Followers");
+
+                    b.Navigation("Following");
+
                     b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618

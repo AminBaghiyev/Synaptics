@@ -15,9 +15,11 @@ public static class DependencyInjection
     {
         services.AddDbContext<AppDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("local")));
 
+        services.AddScoped<IUserRelationRepository, UserRelationRepository>();
         services.AddScoped<IPostRepository, PostRepository>();
 
         services.AddScoped<IAppUserService, AppUserService>();
+        services.AddScoped<IUserRelationService, UserRelationService>();
         services.AddScoped<IPostService, PostService>();
     }
 }

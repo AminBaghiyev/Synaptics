@@ -13,4 +13,6 @@ public class AppUser : IdentityUser
     public string Biography { get; set; }
     public string SelfDescription { get; set; }
     public ICollection<Post> Posts { get; set; }
+    public ICollection<UserRelation> Following { get; set; }
+    public ICollection<UserRelation> Followers { get; set; }
 }
