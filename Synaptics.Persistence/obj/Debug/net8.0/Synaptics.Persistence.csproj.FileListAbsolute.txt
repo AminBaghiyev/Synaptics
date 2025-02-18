@@ -2,7 +2,9 @@ C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Persistence\bin\Debug\net8.0\Syn
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Persistence\bin\Debug\net8.0\Synaptics.Persistence.runtimeconfig.json
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Persistence\bin\Debug\net8.0\Synaptics.Persistence.dll
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Persistence\bin\Debug\net8.0\Synaptics.Persistence.pdb
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Persistence\bin\Debug\net8.0\Synaptics.Application.dll
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Persistence\bin\Debug\net8.0\Synaptics.Domain.dll
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Persistence\bin\Debug\net8.0\Synaptics.Application.pdb
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Persistence\bin\Debug\net8.0\Synaptics.Domain.pdb
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Persistence\obj\Debug\net8.0\Synaptics.Persistence.csproj.AssemblyReference.cache
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Persistence\obj\Debug\net8.0\Synaptics.Persistence.GeneratedMSBuildEditorConfig.editorconfig
@@ -16,5 +18,3 @@ C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Persistence\obj\Debug\net8.0\ref
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Persistence\obj\Debug\net8.0\Synaptics.Persistence.pdb
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Persistence\obj\Debug\net8.0\Synaptics.Persistence.genruntimeconfig.cache
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Persistence\obj\Debug\net8.0\ref\Synaptics.Persistence.dll
-C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Persistence\bin\Debug\net8.0\Synaptics.Application.dll
-C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Persistence\bin\Debug\net8.0\Synaptics.Application.pdb

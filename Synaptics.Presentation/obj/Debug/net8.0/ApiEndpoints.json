@@ -345,6 +345,27 @@
   },
   {
     "ContainingType": "Synaptics.Presentation.Controllers.v1.UserController",
+    "Method": "AISearch",
+    "RelativePath": "api/v1/User/ai-search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "query",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "offset",
+        "Type": "System.UInt64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Synaptics.Presentation.Controllers.v1.UserController",
     "Method": "ChangeCoverPhoto",
     "RelativePath": "api/v1/User/changeCoverPhoto",
     "HttpMethod": "PUT",
@@ -510,6 +531,11 @@
       {
         "Name": "query",
         "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "offset",
+        "Type": "System.Int32",
         "IsRequired": false
       }
     ],

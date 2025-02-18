@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Qdrant.Client;
 using Synaptics.Application;
 using Synaptics.Domain.Entities;
 using Synaptics.Infrastructure;
@@ -32,9 +33,15 @@ builder.Services.AddControllers()
     {
         options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
     });
+builder.Services.AddHttpClient();
 builder.Services.AddApplication();
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddInfrastructure();
+builder.Services.AddSingleton<QdrantClient>(provider =>
+{
+    string qdrantApi = builder.Configuration.GetSection("Qdrant")["SecretKey"];
+    return new QdrantClient("localhost", 6334, apiKey: qdrantApi);
+});
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 {

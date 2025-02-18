@@ -21,6 +21,10 @@ public class AppUserProfile : Profile
             .ReverseMap()
             .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}"));
 
+        CreateMap<AISearchAppUserDTO, AppUser>()
+            .ReverseMap()
+            .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}"));
+
         CreateMap<ChangeAppUserInfoDTO, AppUser>()
             .ReverseMap();
 

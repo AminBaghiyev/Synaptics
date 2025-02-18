@@ -1,20 +1,21 @@
 ﻿using Asp.Versioning;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Synaptics.Application.Commands.AppUser.ChangeAppUserInfo;
 using Synaptics.Application.Commands.AppUser.ChangeCoverPhotoAppUser;
 using Synaptics.Application.Commands.AppUser.ChangePasswordAppUser;
 using Synaptics.Application.Commands.AppUser.ChangeProfilePhotoAppUser;
 using Synaptics.Application.Commands.AppUser.LoginAppUser;
 using Synaptics.Application.Commands.AppUser.RegisterAppUser;
-using Synaptics.Application.Queries.AppUser.SearchAppUser;
+using Synaptics.Application.Commands.UserRelation.FollowUser;
+using Synaptics.Application.Commands.UserRelation.RemoveFollower;
+using Synaptics.Application.Commands.UserRelation.UnfollowUser;
 using Synaptics.Application.DTOs;
 using Synaptics.Application.Exceptions.Base;
-using Synaptics.Application.Commands.AppUser.ChangeAppUserInfo;
-using Synaptics.Application.Queries.AppUser.GetAppUserProfile;
+using Synaptics.Application.Queries.AppUser.AISearchAppUser;
 using Synaptics.Application.Queries.AppUser.GetAppUserInfo;
-using Synaptics.Application.Commands.UserRelation.FollowUser;
-using Synaptics.Application.Commands.UserRelation.UnfollowUser;
-using Synaptics.Application.Commands.UserRelation.RemoveFollower;
+using Synaptics.Application.Queries.AppUser.GetAppUserProfile;
+using Synaptics.Application.Queries.AppUser.SearchAppUser;
 using Synaptics.Application.Queries.UserRelation.Followers;
 using Synaptics.Application.Queries.UserRelation.Followings;
 
@@ -32,12 +33,29 @@ public class UserController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("search")]
-    public async Task<IActionResult> Search([FromQuery] string query)
+    [HttpGet("ai-search")]
+    public async Task<IActionResult> AISearch([FromQuery] string query, ulong offset)
     {
         try
         {
-            return Ok(await _mediator.Send(new SearchAppUserCommand { Query = query }));
+            return Ok(await _mediator.Send(new AISearchAppUserQuery { Query = query, Offset = offset }));
+        }
+        catch (ExternalException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+        }
+    }
+
+    [HttpGet("search")]
+    public async Task<IActionResult> Search([FromQuery] string query, int offset)
+    {
+        try
+        {
+            return Ok(await _mediator.Send(new SearchAppUserQuery { Query = query, Offset = offset }));
         }
         catch (ExternalException ex)
         {
@@ -54,7 +72,7 @@ public class UserController : ControllerBase
     {
         try
         {
-            return Ok(await _mediator.Send(new GetAppUserProfileCommand { UserName = username }));
+            return Ok(await _mediator.Send(new GetAppUserProfileQuery { UserName = username }));
         }
         catch (ExternalException ex)
         {
@@ -71,7 +89,7 @@ public class UserController : ControllerBase
     {
         try
         {
-            return Ok(await _mediator.Send(new FollowersCommand { UserName = username, Page = page }));
+            return Ok(await _mediator.Send(new FollowersQuery { UserName = username, Page = page }));
         }
         catch (ExternalException ex)
         {
@@ -88,7 +106,7 @@ public class UserController : ControllerBase
     {
         try
         {
-            return Ok(await _mediator.Send(new FollowingsCommand { UserName = username, Page = page }));
+            return Ok(await _mediator.Send(new FollowingsQuery { UserName = username, Page = page }));
         }
         catch (ExternalException ex)
         {
@@ -105,7 +123,7 @@ public class UserController : ControllerBase
     {
         try
         {
-            return Ok(await _mediator.Send(new GetAppUserInfoCommand()));
+            return Ok(await _mediator.Send(new GetAppUserInfoQuery()));
         }
         catch (ExternalException ex)
         {

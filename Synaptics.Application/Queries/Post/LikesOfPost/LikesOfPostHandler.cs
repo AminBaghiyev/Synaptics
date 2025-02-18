@@ -6,7 +6,7 @@ using System.Security.Claims;
 
 namespace Synaptics.Application.Queries.Post.LikesOfPost;
 
-public class LikesOfPostHandler : IRequestHandler<LikesOfPostCommand, ICollection<PostLikeUserDTO>>
+public class LikesOfPostHandler : IRequestHandler<LikesOfPostQuery, ICollection<PostLikeUserDTO>>
 {
     readonly IPostService _postService;
     readonly IHttpContextAccessor _contextAccessor;
@@ -17,7 +17,7 @@ public class LikesOfPostHandler : IRequestHandler<LikesOfPostCommand, ICollectio
         _contextAccessor = contextAccessor;
     }
 
-    public async Task<ICollection<PostLikeUserDTO>> Handle(LikesOfPostCommand request, CancellationToken cancellationToken)
+    public async Task<ICollection<PostLikeUserDTO>> Handle(LikesOfPostQuery request, CancellationToken cancellationToken)
     {
         string? username = _contextAccessor.HttpContext?.User.FindFirstValue("username");
 

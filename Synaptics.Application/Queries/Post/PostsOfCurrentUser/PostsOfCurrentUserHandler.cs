@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace Synaptics.Application.Queries.Post.PostsOfCurrentUser;
 
-public class PostsOfCurrentUserHandler : IRequestHandler<PostsOfCurrentUserCommand, ICollection<PostItemOfCurrentUserDTO>>
+public class PostsOfCurrentUserHandler : IRequestHandler<PostsOfCurrentUserQuery, ICollection<PostItemOfCurrentUserDTO>>
 {
     readonly IPostService _service;
     readonly IHttpContextAccessor _contextAccessor;
@@ -18,7 +18,7 @@ public class PostsOfCurrentUserHandler : IRequestHandler<PostsOfCurrentUserComma
         _contextAccessor = contextAccessor;
     }
 
-    public async Task<ICollection<PostItemOfCurrentUserDTO>> Handle(PostsOfCurrentUserCommand request, CancellationToken cancellationToken)
+    public async Task<ICollection<PostItemOfCurrentUserDTO>> Handle(PostsOfCurrentUserQuery request, CancellationToken cancellationToken)
     {
         string username = _contextAccessor.HttpContext?.User.FindFirstValue("username") ?? throw new ExternalException("Token not found!");
 

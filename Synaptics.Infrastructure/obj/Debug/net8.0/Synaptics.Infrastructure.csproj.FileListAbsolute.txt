@@ -1,9 +1,3 @@
-C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\obj\Debug\net8.0\Synaptics.Infrastructure.csproj.AssemblyReference.cache
-C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\obj\Debug\net8.0\Synaptics.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\obj\Debug\net8.0\Synaptics.Infrastructure.AssemblyInfoInputs.cache
-C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\obj\Debug\net8.0\Synaptics.Infrastructure.AssemblyInfo.cs
-C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\obj\Debug\net8.0\Synaptics.Infrastructure.csproj.CoreCompileInputs.cache
-C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\obj\Debug\net8.0\Synaptics.Infrastructure.sourcelink.json
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\bin\Debug\net8.0\Synaptics.Infrastructure.deps.json
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\bin\Debug\net8.0\Synaptics.Infrastructure.dll
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\bin\Debug\net8.0\Synaptics.Infrastructure.pdb
@@ -11,6 +5,12 @@ C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\bin\Debug\net8.0\
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\bin\Debug\net8.0\Synaptics.Domain.dll
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\bin\Debug\net8.0\Synaptics.Application.pdb
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\bin\Debug\net8.0\Synaptics.Domain.pdb
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\obj\Debug\net8.0\Synaptics.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\obj\Debug\net8.0\Synaptics.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\obj\Debug\net8.0\Synaptics.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\obj\Debug\net8.0\Synaptics.Infrastructure.AssemblyInfo.cs
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\obj\Debug\net8.0\Synaptics.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\obj\Debug\net8.0\Synaptics.Infrastructure.sourcelink.json
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\obj\Debug\net8.0\Synaptic.903E9FD7.Up2Date
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\obj\Debug\net8.0\Synaptics.Infrastructure.dll
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Infrastructure\obj\Debug\net8.0\refint\Synaptics.Infrastructure.dll

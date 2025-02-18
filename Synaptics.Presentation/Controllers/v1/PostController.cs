@@ -31,7 +31,7 @@ public class PostController : ControllerBase
     }
 
     [HttpGet("my")]
-    public async Task<IActionResult> MyPosts([FromQuery] PostsOfCurrentUserCommand command)
+    public async Task<IActionResult> MyPosts([FromQuery] PostsOfCurrentUserQuery command)
     {
         try
         {
@@ -52,7 +52,7 @@ public class PostController : ControllerBase
     {
         try
         {
-            return Ok(await _mediator.Send(new PostOfCurrentUserCommand { Id = id }));
+            return Ok(await _mediator.Send(new PostOfCurrentUserQuery { Id = id }));
         }
         catch (ExternalException ex)
         {
@@ -69,7 +69,7 @@ public class PostController : ControllerBase
     {
         try
         {
-            return Ok(await _mediator.Send(new PostsOfUserCommand { UserName = username, Page = page }));
+            return Ok(await _mediator.Send(new PostsOfUserQuery { UserName = username, Page = page }));
         }
         catch (ExternalException ex)
         {
@@ -86,7 +86,7 @@ public class PostController : ControllerBase
     {
         try
         {
-            return Ok(await _mediator.Send(new PostOfUserCommand { UserName = username, Id = id}));
+            return Ok(await _mediator.Send(new PostOfUserQuery { UserName = username, Id = id}));
         }
         catch (ExternalException ex)
         {
@@ -103,7 +103,7 @@ public class PostController : ControllerBase
     {
         try
         {
-            return Ok(await _mediator.Send(new LikesOfPostCommand { UserName = username, PostId = id, Page = page }));
+            return Ok(await _mediator.Send(new LikesOfPostQuery { UserName = username, PostId = id, Page = page }));
         }
         catch (ExternalException ex)
         {
@@ -156,7 +156,7 @@ public class PostController : ControllerBase
     {
         try
         {
-            return Ok(await _mediator.Send(new PostForUpdateCommand { Id = id}));
+            return Ok(await _mediator.Send(new PostForUpdateQuery { Id = id}));
         }
         catch (ExternalException ex)
         {

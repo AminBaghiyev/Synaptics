@@ -6,7 +6,7 @@ using System.Security.Claims;
 
 namespace Synaptics.Application.Queries.UserRelation.Followers;
 
-public class FollowersHandler : IRequestHandler<FollowersCommand, ICollection<FollowerDTO>>
+public class FollowersHandler : IRequestHandler<FollowersQuery, ICollection<FollowerDTO>>
 {
     readonly IUserRelationService _service;
     readonly IHttpContextAccessor _contextAccessor;
@@ -17,7 +17,7 @@ public class FollowersHandler : IRequestHandler<FollowersCommand, ICollection<Fo
         _contextAccessor = contextAccessor;
     }
 
-    public async Task<ICollection<FollowerDTO>> Handle(FollowersCommand request, CancellationToken cancellationToken)
+    public async Task<ICollection<FollowerDTO>> Handle(FollowersQuery request, CancellationToken cancellationToken)
     {
         string? username = _contextAccessor.HttpContext?.User.FindFirstValue("username");
 

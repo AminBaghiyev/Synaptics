@@ -3,7 +3,7 @@ using Synaptics.Application.DTOs;
 
 namespace Synaptics.Application.Queries.Post.PostsOfCurrentUser;
 
-public class PostsOfCurrentUserCommand : IRequest<ICollection<PostItemOfCurrentUserDTO>>
+public class PostOfCurrentUserQuery : IRequest<PostItemOfCurrentUserDTO>
 {
-    public int Page { get; set; }
+    public long Id { get; set; }
 }

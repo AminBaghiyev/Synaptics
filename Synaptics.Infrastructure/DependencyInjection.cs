@@ -10,5 +10,7 @@ public static class DependencyInjection
     {
         services.AddSingleton<IJWTTokenService, JWTTokenService>();
         services.AddSingleton<IFileService, FileService>();
+        services.AddSingleton<IPyBridgeService, PyBridgeService>();
+        services.AddSingleton<IQdrantService, QdrantService>();
     }
 }

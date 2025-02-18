@@ -9,7 +9,7 @@ using Entities = Synaptics.Domain.Entities;
 
 namespace Synaptics.Application.Queries.AppUser.GetAppUserInfo;
 
-public class GetAppUserInfoHandler : IRequestHandler<GetAppUserInfoCommand, ChangeAppUserInfoDTO>
+public class GetAppUserInfoHandler : IRequestHandler<GetAppUserInfoQuery, ChangeAppUserInfoDTO>
 {
     readonly UserManager<Entities.AppUser> _userManager;
     readonly IHttpContextAccessor _contextAccessor;
@@ -22,7 +22,7 @@ public class GetAppUserInfoHandler : IRequestHandler<GetAppUserInfoCommand, Chan
         _mapper = mapper;
     }
 
-    public async Task<ChangeAppUserInfoDTO> Handle(GetAppUserInfoCommand request, CancellationToken cancellationToken)
+    public async Task<ChangeAppUserInfoDTO> Handle(GetAppUserInfoQuery request, CancellationToken cancellationToken)
     {
         string username = _contextAccessor.HttpContext?.User.FindFirstValue("username") ?? throw new ExternalException("Token not found!");
 

@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace Synaptics.Application.Queries.Post.PostForUpdate;
 
-public class PostForUpdateHandler : IRequestHandler<PostForUpdateCommand, UpdatePostDTO>
+public class PostForUpdateHandler : IRequestHandler<PostForUpdateQuery, UpdatePostDTO>
 {
     readonly IPostService _service;
     readonly IHttpContextAccessor _contextAccessor;
@@ -18,7 +18,7 @@ public class PostForUpdateHandler : IRequestHandler<PostForUpdateCommand, Update
         _contextAccessor = contextAccessor;
     }
 
-    public async Task<UpdatePostDTO> Handle(PostForUpdateCommand request, CancellationToken cancellationToken)
+    public async Task<UpdatePostDTO> Handle(PostForUpdateQuery request, CancellationToken cancellationToken)
     {
         string username = _contextAccessor.HttpContext?.User.FindFirstValue("username") ?? throw new ExternalException("Token not found!");
 

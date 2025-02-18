@@ -1,10 +1,11 @@
 ﻿using MediatR;
 using Synaptics.Application.DTOs;
+using Synaptics.Application.Exceptions.Base;
 using Synaptics.Application.Interfaces;
 
 namespace Synaptics.Application.Queries.AppUser.SearchAppUser;
 
-public class SearchAppUserHandler : IRequestHandler<SearchAppUserCommand, ICollection<SearchAppUserDTO>>
+public class SearchAppUserHandler : IRequestHandler<SearchAppUserQuery, ICollection<SearchAppUserDTO>>
 {
     readonly IAppUserService _appUserService;
 
@@ -13,8 +14,10 @@ public class SearchAppUserHandler : IRequestHandler<SearchAppUserCommand, IColle
         _appUserService = appUserService;
     }
 
-    public async Task<ICollection<SearchAppUserDTO>> Handle(SearchAppUserCommand request, CancellationToken cancellationToken)
+    public async Task<ICollection<SearchAppUserDTO>> Handle(SearchAppUserQuery request, CancellationToken cancellationToken)
     {
-        return await _appUserService.SearchUserAsync(request.Query);
+        if (request.Query.Trim().Length == 0) throw new ExternalException("Invalid query");
+
+        return await _appUserService.SearchUserAsync(request.Query, offset: request.Offset);
     }
 }

@@ -11,5 +11,6 @@ public interface IAppUserService
     Task<string> ChangeCoverPhotoAsync(string username, IFormFile photo);
     Task ChangeInfoAsync(string username, ChangeAppUserInfoDTO dto);
     Task<GetAppUserProfileDTO> GetProfileAsync(string username);
-    Task<ICollection<SearchAppUserDTO>> SearchUserAsync(string query);
+    Task<ICollection<SearchAppUserDTO>> SearchUserAsync(string query, int limit = 20, int offset = 0);
+    Task<ICollection<AISearchAppUserDTO>> SearchUserWithAIAsync(string query, ulong limit = 10, ulong offset = 0);
 }
