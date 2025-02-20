@@ -13,4 +13,5 @@ public class Post : BaseEntity
     public string UserId { get; set; }
     public AppUser User { get; set; }
     public ICollection<PostLike> Likes { get; set; }
+    public ICollection<PostComment> Comments { get; set; }
 }

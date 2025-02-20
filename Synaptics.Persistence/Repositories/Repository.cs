@@ -19,7 +19,7 @@ public class Repository<T> : IRepository<T> where T : BaseEntity, new()
 
     public async Task<ICollection<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = null, int page = 0, int count = 5, bool orderAsc = true, string orderByProperty = "Id", params string[] includes)
     {
-        IQueryable<T> query = Table.AsNoTracking();
+        IQueryable<T> query = Table.AsNoTrackingWithIdentityResolution();
 
         if (includes.Length != 0)
         {
@@ -46,7 +46,7 @@ public class Repository<T> : IRepository<T> where T : BaseEntity, new()
     {
         IQueryable<T> query = Table;
 
-        if (!isTracking) query = query.AsNoTracking();
+        if (!isTracking) query = query.AsNoTrackingWithIdentityResolution();
 
         if (includes.Length != 0)
         {

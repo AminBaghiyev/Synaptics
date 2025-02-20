@@ -74,7 +74,7 @@ public class QdrantService : IQdrantService
     {
         try
         {
-            IReadOnlyCollection<ScoredPoint> res = await _qdrantClient.SearchAsync(collectionName, queryVector, limit: limit, offset: offset);
+            IReadOnlyCollection<ScoredPoint> res = await _qdrantClient.SearchAsync(collectionName, queryVector, limit: limit, offset: offset, scoreThreshold: 0.4f);
 
             return (QdrantResult.Success(), res.Select(p => (Id: p.Id.Uuid, p.Score)).ToList());
         }

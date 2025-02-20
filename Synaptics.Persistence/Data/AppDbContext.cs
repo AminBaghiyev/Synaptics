@@ -9,6 +9,8 @@ public class AppDbContext : IdentityDbContext<AppUser>
 {
     public DbSet<Post> Posts { get; set; }
     public DbSet<PostLike> PostLikes { get; set; }
+    public DbSet<CommentLike> CommentLikes { get; set; }
+    public DbSet<PostComment> PostComments { get; set; }
     public DbSet<UserRelation> UserRelations { get; set; }
 
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }

@@ -251,6 +251,21 @@ namespace Synaptics.Persistence.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Synaptics.Domain.Entities.CommentLike", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("text");
+
+                    b.Property<long>("CommentId")
+                        .HasColumnType("BIGINT");
+
+                    b.HasKey("UserId", "CommentId");
+
+                    b.HasIndex("CommentId");
+
+                    b.ToTable("CommentLikes");
+                });
+
             modelBuilder.Entity("Synaptics.Domain.Entities.Post", b =>
                 {
                     b.Property<long>("Id")
@@ -306,6 +321,65 @@ namespace Synaptics.Persistence.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("Synaptics.Domain.Entities.PostComment", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("BIGINT");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("character varying(512)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsUpdated")
+                        .HasColumnType("boolean");
+
+                    b.Property<long>("LikeCount")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("BIGINT")
+                        .HasDefaultValue(0L);
+
+                    b.Property<long?>("ParentId")
+                        .HasColumnType("BIGINT");
+
+                    b.Property<long>("PostId")
+                        .HasColumnType("BIGINT");
+
+                    b.Property<long>("ReplyCount")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("BIGINT")
+                        .HasDefaultValue(0L);
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentId");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PostComments");
                 });
 
             modelBuilder.Entity("Synaptics.Domain.Entities.PostLike", b =>
@@ -397,6 +471,25 @@ namespace Synaptics.Persistence.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Synaptics.Domain.Entities.CommentLike", b =>
+                {
+                    b.HasOne("Synaptics.Domain.Entities.PostComment", "Comment")
+                        .WithMany("Likes")
+                        .HasForeignKey("CommentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Synaptics.Domain.Entities.AppUser", "User")
+                        .WithMany("CommentsLike")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Comment");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Synaptics.Domain.Entities.Post", b =>
                 {
                     b.HasOne("Synaptics.Domain.Entities.AppUser", "User")
@@ -404,6 +497,32 @@ namespace Synaptics.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Synaptics.Domain.Entities.PostComment", b =>
+                {
+                    b.HasOne("Synaptics.Domain.Entities.PostComment", "Parent")
+                        .WithMany("Replies")
+                        .HasForeignKey("ParentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Synaptics.Domain.Entities.Post", "Post")
+                        .WithMany("Comments")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Synaptics.Domain.Entities.AppUser", "User")
+                        .WithMany("PostComments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Parent");
+
+                    b.Navigation("Post");
 
                     b.Navigation("User");
                 });
@@ -448,9 +567,13 @@ namespace Synaptics.Persistence.Migrations
 
             modelBuilder.Entity("Synaptics.Domain.Entities.AppUser", b =>
                 {
+                    b.Navigation("CommentsLike");
+
                     b.Navigation("Followers");
 
                     b.Navigation("Following");
+
+                    b.Navigation("PostComments");
 
                     b.Navigation("Posts");
 
@@ -459,7 +582,16 @@ namespace Synaptics.Persistence.Migrations
 
             modelBuilder.Entity("Synaptics.Domain.Entities.Post", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("Likes");
+                });
+
+            modelBuilder.Entity("Synaptics.Domain.Entities.PostComment", b =>
+                {
+                    b.Navigation("Likes");
+
+                    b.Navigation("Replies");
                 });
 #pragma warning restore 612, 618
         }

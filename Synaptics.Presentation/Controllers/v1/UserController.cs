@@ -22,7 +22,7 @@ using Synaptics.Application.Queries.UserRelation.Followings;
 namespace Synaptics.Presentation.Controllers.v1;
 
 [ApiVersion("1.0")]
-[Route("api/v{version:apiVersion}/[controller]")]
+[Route("api/v{version:apiVersion}/user")]
 [ApiController]
 public class UserController : ControllerBase
 {

@@ -17,10 +17,13 @@ public static class DependencyInjection
 
         services.AddScoped<IUserRelationRepository, UserRelationRepository>();
         services.AddScoped<IPostLikeRepository, PostLikeRepository>();
+        services.AddScoped<IPostCommentRepository, PostCommentRepository>();
+        services.AddScoped<ICommentLikeRepository, CommentLikeRepository>();
         services.AddScoped<IPostRepository, PostRepository>();
 
         services.AddScoped<IAppUserService, AppUserService>();
         services.AddScoped<IUserRelationService, UserRelationService>();
+        services.AddScoped<IPostCommentService, PostCommentService>();
         services.AddScoped<IPostService, PostService>();
     }
 }

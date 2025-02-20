@@ -16,4 +16,6 @@ public class AppUser : IdentityUser
     public ICollection<UserRelation> Following { get; set; }
     public ICollection<Post> Posts { get; set; }
     public ICollection<PostLike> PostsLike { get; set; }
+    public ICollection<PostComment> PostComments { get; set; }
+    public ICollection<CommentLike> CommentsLike { get; set; }
 }

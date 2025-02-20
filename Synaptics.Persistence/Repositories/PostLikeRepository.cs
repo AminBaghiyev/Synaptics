@@ -59,7 +59,7 @@ public class PostLikeRepository : IPostLikeRepository
         return query;
     }
 
-    public Task<PostLike?> GetOneAsync(Expression<Func<PostLike, bool>> predicate, params string[] includes)
+    public async Task<PostLike?> GetOneAsync(Expression<Func<PostLike, bool>> predicate, params string[] includes)
     {
         IQueryable<PostLike> query = Table.AsNoTracking();
 
@@ -71,7 +71,7 @@ public class PostLikeRepository : IPostLikeRepository
             }
         }
 
-        return query.SingleOrDefaultAsync(predicate);
+        return await query.SingleOrDefaultAsync(predicate);
     }
 
     public async Task CreateAsync(PostLike entity)

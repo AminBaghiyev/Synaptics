@@ -19,7 +19,7 @@ using Synaptics.Application.Queries.Post.PostsOfUser;
 namespace Synaptics.Presentation.Controllers.v1;
 
 [ApiVersion("1.0")]
-[Route("api/v{version:apiVersion}/[controller]")]
+[Route("api/v{version:apiVersion}/post")]
 [ApiController]
 public class PostController : ControllerBase
 {
