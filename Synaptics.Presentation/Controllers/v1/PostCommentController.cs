@@ -1,15 +1,16 @@
 ﻿using Asp.Versioning;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Synaptics.Application.Commands.Post.CreatePostComment;
-using Synaptics.Application.Commands.Post.LikePostComment;
-using Synaptics.Application.Commands.Post.SoftDeletePostComment;
-using Synaptics.Application.Commands.Post.UnlikePostComment;
-using Synaptics.Application.Commands.Post.UpdatePostComment;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Commands.PostComment.CreatePostComment;
+using Synaptics.Application.Commands.PostComment.LikePostComment;
+using Synaptics.Application.Commands.PostComment.SoftDeletePostComment;
+using Synaptics.Application.Commands.PostComment.UnlikePostComment;
+using Synaptics.Application.Commands.PostComment.UpdatePostComment;
+using Synaptics.Application.Common;
 using Synaptics.Application.Exceptions.Base;
-using Synaptics.Application.Queries.Post.CommentsOfPost;
-using Synaptics.Application.Queries.Post.PostCommentForUpdate;
+using Synaptics.Application.Queries.PostComment.CommentsOfPost;
+using Synaptics.Application.Queries.PostComment.PostCommentForUpdate;
+using System.Net;
 
 namespace Synaptics.Presentation.Controllers.v1;
 
@@ -25,127 +26,206 @@ public class PostCommentController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet]
-    public async Task<IActionResult> GetComments([FromQuery] long postId, int page)
+    [HttpGet("all")]
+    public async Task<Response> Comments([FromQuery] CommentsOfPostQuery query)
     {
         try
         {
-            return Ok(await _mediator.Send(new CommentsOfPostQuery { PostId = postId, Page = page }));
+            Response response = await _mediator.Send(query);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetCommentForUpdate([FromRoute] long id)
+    [HttpGet("update")]
+    public async Task<Response> CommentForUpdate([FromQuery] PostCommentForUpdateQuery query)
     {
         try
         {
-            return Ok(await _mediator.Send(new PostCommentForUpdateQuery { Id = id }));
+            Response response = await _mediator.Send(query);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
     [HttpPost("add")]
-    public async Task<IActionResult> AddComment([FromBody] CreatePostCommentDTO comment)
+    public async Task<Response> Add([FromBody] CreatePostCommentCommand command)
     {
         try
         {
-            await _mediator.Send(new CreatePostCommentCommand { Comment = comment });
-            return Ok();
+            Response response = await _mediator.Send(command);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
     [HttpPut("edit")]
-    public async Task<IActionResult> EditComment([FromBody] UpdatePostCommentDTO comment)
+    public async Task<Response> Edit([FromBody] UpdatePostCommentCommand command)
     {
         try
         {
-            await _mediator.Send(new UpdatePostCommentCommand { Comment = comment });
-            return Ok();
+            Response response = await _mediator.Send(command);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
-    [HttpPost("{id}/like")]
-    public async Task<IActionResult> LikeComment([FromRoute] long id)
+    [HttpPost("like")]
+    public async Task<Response> Like([FromBody] LikePostCommentCommand command)
     {
         try
         {
-            await _mediator.Send(new LikePostCommentCommand { CommentId = id });
-            return Ok();
+            Response response = await _mediator.Send(command);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
-    [HttpPost("{id}/unlike")]
-    public async Task<IActionResult> UnlikeComment([FromRoute] long id)
+    [HttpPost("unlike")]
+    public async Task<Response> Unlike([FromBody] UnlikePostCommentCommand command)
     {
         try
         {
-            await _mediator.Send(new UnlikePostCommentCommand { CommentId = id });
-            return Ok();
+            Response response = await _mediator.Send(command);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
-    [HttpDelete("{id}/delete")]
-    public async Task<IActionResult> DeleteComment([FromRoute] long id)
+    [HttpDelete("delete")]
+    public async Task<Response> Delete([FromBody] SoftDeletePostCommentCommand command)
     {
         try
         {
-            await _mediator.Send(new SoftDeletePostCommentCommand { Id = id });
-            return Ok();
+            Response response = await _mediator.Send(command);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 }

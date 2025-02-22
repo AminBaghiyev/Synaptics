@@ -1,9 +1,11 @@
 ﻿using MediatR;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Common;
 
 namespace Synaptics.Application.Commands.AppUser.ChangePasswordAppUser;
 
-public class ChangePasswordAppUserCommand : IRequest
+public record ChangePasswordAppUserCommand : IRequest<Response>
 {
-    public ChangePasswordAppUserDTO Passwords { get; set; }
+    public string OriginalPassword { get; set; }
+    public string NewPassword { get; set; }
+    public string ConfirmPassword { get; set; }
 }

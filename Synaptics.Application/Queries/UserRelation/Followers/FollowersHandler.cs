@@ -1,26 +1,67 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Http;
-using Synaptics.Application.DTOs;
+using Microsoft.AspNetCore.Identity;
+using Synaptics.Application.Common;
 using Synaptics.Application.Interfaces;
+using Synaptics.Domain.Enums;
+using System.Net;
 using System.Security.Claims;
+using Entities = Synaptics.Domain.Entities;
 
 namespace Synaptics.Application.Queries.UserRelation.Followers;
 
-public class FollowersHandler : IRequestHandler<FollowersQuery, ICollection<FollowerDTO>>
+public class FollowersHandler : IRequestHandler<FollowersQuery, Response>
 {
-    readonly IUserRelationService _service;
+    readonly IUnitOfWork _unitOfWork;
     readonly IHttpContextAccessor _contextAccessor;
+    readonly UserManager<Entities.AppUser> _userManager;
+    readonly IMapper _mapper;
 
-    public FollowersHandler(IUserRelationService service, IHttpContextAccessor contextAccessor)
+    public FollowersHandler(IUnitOfWork unitOfWork, IHttpContextAccessor contextAccessor, UserManager<Entities.AppUser> userManager, IMapper mapper)
     {
-        _service = service;
+        _unitOfWork = unitOfWork;
         _contextAccessor = contextAccessor;
+        _userManager = userManager;
+        _mapper = mapper;
     }
 
-    public async Task<ICollection<FollowerDTO>> Handle(FollowersQuery request, CancellationToken cancellationToken)
+    public async Task<Response> Handle(FollowersQuery request, CancellationToken cancellationToken)
     {
         string? username = _contextAccessor.HttpContext?.User.FindFirstValue("username");
 
-        return await _service.GetFollowersAsync(request.UserName, username, request.Page);
+        Entities.AppUser? user = await _userManager.FindByNameAsync(request.UserName);
+        if (user is null)
+            return new Response
+            {
+                StatusCode = HttpStatusCode.NotFound,
+                MessageCode = MessageCode.UserNotExists
+            };
+        
+        ICollection<Entities.UserRelation> followers = await _unitOfWork.UserRelationRepository.GetAllAsync(e => e.FollowingId == user.Id, request.Page, includes: ["Follower"]);
+
+        HashSet<string> currentUserFollowingIds = [];
+        if (username is not null)
+        {
+            Entities.AppUser? currentUser = await _userManager.FindByNameAsync(username);
+            if (currentUser is null)
+                return new Response
+                {
+                    StatusCode = HttpStatusCode.NotFound,
+                    MessageCode = MessageCode.UserNotExists
+                };
+
+            ICollection<Entities.UserRelation> followingRelations = await _unitOfWork.UserRelationRepository.GetAllAsync(e => e.FollowerId == currentUser.Id);
+            currentUserFollowingIds = new HashSet<string>(followingRelations.Select(e => e.FollowingId));
+        }
+
+        return new Response
+        {
+            StatusCode = HttpStatusCode.OK,
+            Data = _mapper.Map<ICollection<FollowersQueryResponse>>(followers, opt =>
+                {
+                    opt.Items["currentUserFollowingIds"] = currentUserFollowingIds;
+                })
+        };
     }
 }

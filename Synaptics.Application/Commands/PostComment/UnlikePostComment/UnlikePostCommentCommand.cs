@@ -1,8 +1,9 @@
 ﻿using MediatR;
+using Synaptics.Application.Common;
 
-namespace Synaptics.Application.Commands.Post.UnlikePostComment;
+namespace Synaptics.Application.Commands.PostComment.UnlikePostComment;
 
-public class UnlikePostCommentCommand : IRequest
+public record UnlikePostCommentCommand : IRequest<Response>
 {
-    public long CommentId { get; set; }
+    public long Id { get; set; }
 }

@@ -108,23 +108,23 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\profile_photos\1961767c-c451-4268-9ed5-b25115c507d5.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\profile_photos\ff2341e6-1350-46d1-9c67-0a7f36e798ed.png'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\profile_photos\cbe38118-f419-4d8c-8752-b20bfce7ef17.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>Synaptics.Presentation</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Synaptics.Presentation</BasePath>
-      <RelativePath>uploads/profile_photos/ff2341e6-1350-46d1-9c67-0a7f36e798ed.png</RelativePath>
+      <RelativePath>uploads/profile_photos/cbe38118-f419-4d8c-8752-b20bfce7ef17.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>vsmlg307wf</Fingerprint>
-      <Integrity>Ud12kIzLke2LhaBP0yPzLF+l0+PPVZhL5wUYraI0v6A=</Integrity>
+      <Fingerprint>35yrfargbd</Fingerprint>
+      <Integrity>aZO3It77tnWbExXzkeU7GePBt9f8FYCkvqtk+EH0nY0=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\profile_photos\ff2341e6-1350-46d1-9c67-0a7f36e798ed.png'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\profile_photos\cbe38118-f419-4d8c-8752-b20bfce7ef17.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

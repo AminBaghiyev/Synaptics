@@ -2,14 +2,15 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Synaptics.Application.DTOs;
-using Synaptics.Application.Exceptions.Base;
+using Synaptics.Application.Common;
+using Synaptics.Domain.Enums;
+using System.Net;
 using System.Security.Claims;
 using Entities = Synaptics.Domain.Entities;
 
 namespace Synaptics.Application.Queries.AppUser.GetAppUserInfo;
 
-public class GetAppUserInfoHandler : IRequestHandler<GetAppUserInfoQuery, ChangeAppUserInfoDTO>
+public class GetAppUserInfoHandler : IRequestHandler<GetAppUserInfoQuery, Response>
 {
     readonly UserManager<Entities.AppUser> _userManager;
     readonly IHttpContextAccessor _contextAccessor;
@@ -22,10 +23,28 @@ public class GetAppUserInfoHandler : IRequestHandler<GetAppUserInfoQuery, Change
         _mapper = mapper;
     }
 
-    public async Task<ChangeAppUserInfoDTO> Handle(GetAppUserInfoQuery request, CancellationToken cancellationToken)
+    public async Task<Response> Handle(GetAppUserInfoQuery request, CancellationToken cancellationToken)
     {
-        string username = _contextAccessor.HttpContext?.User.FindFirstValue("username") ?? throw new ExternalException("Token not found!");
+        string? username = _contextAccessor.HttpContext?.User.FindFirstValue("username");
+        if (username is null)
+            return new Response
+            {
+                StatusCode = HttpStatusCode.Unauthorized,
+                MessageCode = MessageCode.TokenNotFound
+            };
 
-        return _mapper.Map<ChangeAppUserInfoDTO>(await _userManager.FindByNameAsync(username) ?? throw new ExternalException("User not found!"));
+        Entities.AppUser? user = await _userManager.FindByNameAsync(username);
+        if (user is null)
+            return new Response
+            {
+                StatusCode = HttpStatusCode.NotFound,
+                MessageCode = MessageCode.UserNotExists
+            };
+
+        return new Response
+        {
+            StatusCode = HttpStatusCode.OK,
+            Data = _mapper.Map<GetAppUserInfoQueryResponse>(user)
+        };
     }
 }

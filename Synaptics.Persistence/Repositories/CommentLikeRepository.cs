@@ -79,6 +79,4 @@ public class CommentLikeRepository : ICommentLikeRepository
     {
         Table.Remove(entity);
     }
-
-    public async Task<int> SaveChangesAsync() => await _context.SaveChangesAsync();
 }

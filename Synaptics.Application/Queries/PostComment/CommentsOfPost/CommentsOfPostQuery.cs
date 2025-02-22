@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Common;
 
-namespace Synaptics.Application.Queries.Post.CommentsOfPost;
+namespace Synaptics.Application.Queries.PostComment.CommentsOfPost;
 
-public class CommentsOfPostQuery : IRequest<ICollection<PostCommentItemDTO>>
+public record CommentsOfPostQuery : IRequest<Response>
 {
     public long PostId { get; set; }
     public int Page { get; set; }

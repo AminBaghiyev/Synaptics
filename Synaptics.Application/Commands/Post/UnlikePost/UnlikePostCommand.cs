@@ -1,9 +1,9 @@
 ﻿using MediatR;
+using Synaptics.Application.Common;
 
 namespace Synaptics.Application.Commands.Post.UnlikePost;
 
-public class UnlikePostCommand : IRequest
+public record UnlikePostCommand : IRequest<Response>
 {
-    public string UserName { get; set; }
     public long PostId { get; set; }
 }

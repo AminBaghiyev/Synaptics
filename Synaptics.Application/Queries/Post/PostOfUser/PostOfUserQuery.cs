@@ -1,10 +1,9 @@
 ﻿using MediatR;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Common;
 
 namespace Synaptics.Application.Queries.Post.PostOfUser;
 
-public class PostOfUserQuery : IRequest<PostItemDTO>
+public record PostOfUserQuery : IRequest<Response>
 {
     public long Id { get; set; }
-    public string UserName { get; set; }
 }

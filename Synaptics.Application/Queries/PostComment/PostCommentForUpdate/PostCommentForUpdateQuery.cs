@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Common;
 
-namespace Synaptics.Application.Queries.Post.PostCommentForUpdate;
+namespace Synaptics.Application.Queries.PostComment.PostCommentForUpdate;
 
-public class PostCommentForUpdateQuery : IRequest<UpdatePostCommentDTO>
+public record PostCommentForUpdateQuery : IRequest<Response>
 {
     public long Id { get; set; }
 }

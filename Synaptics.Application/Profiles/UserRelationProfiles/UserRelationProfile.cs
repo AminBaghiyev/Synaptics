@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Queries.UserRelation.Followers;
+using Synaptics.Application.Queries.UserRelation.Followings;
 using Synaptics.Domain.Entities;
 
 namespace Synaptics.Application.Profiles;
@@ -8,7 +9,7 @@ public class UserRelationProfile : Profile
 {
     public UserRelationProfile()
     {
-        CreateMap<UserRelation, FollowerDTO>()
+        CreateMap<UserRelation, FollowersQueryResponse>()
             .ForMember(desc => desc.UserName, opt => opt.MapFrom(src => src.Follower.UserName))
             .ForMember(desc => desc.FullName, opt => opt.MapFrom(src => $"{src.Follower.FirstName} {src.Follower.LastName}"))
             .ForMember(desc => desc.ProfilePhotoPath, opt => opt.MapFrom(src => src.Follower.ProfilePhotoPath))
@@ -25,7 +26,7 @@ public class UserRelationProfile : Profile
                 }
             });
 
-        CreateMap<UserRelation, FollowingDTO>()
+        CreateMap<UserRelation, FollowingsQueryResponse>()
             .ForMember(desc => desc.UserName, opt => opt.MapFrom(src => src.Following.UserName))
             .ForMember(desc => desc.FullName, opt => opt.MapFrom(src => $"{src.Following.FirstName} {src.Following.LastName}"))
             .ForMember(desc => desc.ProfilePhotoPath, opt => opt.MapFrom(src => src.Following.ProfilePhotoPath))

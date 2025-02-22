@@ -1,27 +1,102 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Http;
-using Synaptics.Application.Exceptions.Base;
+using Microsoft.AspNetCore.Identity;
+using Synaptics.Application.Common;
 using Synaptics.Application.Interfaces;
+using Synaptics.Domain.Enums;
+using System.Net;
 using System.Security.Claims;
+using Entities = Synaptics.Domain.Entities;
 
-namespace Synaptics.Application.Commands.Post.CreatePostCommentReply;
+namespace Synaptics.Application.Commands.PostCommentReply.CreatePostCommentReply;
 
-public class CreatePostCommentReplyHandler : IRequestHandler<CreatePostCommentReplyCommand>
+public class CreatePostCommentReplyHandler : IRequestHandler<CreatePostCommentReplyCommand, Response>
 {
-    readonly IPostCommentService _service;
+    readonly IUnitOfWork _unitOfWork;
     readonly IHttpContextAccessor _contextAccessor;
+    readonly UserManager<Entities.AppUser> _userManager;
+    readonly IMapper _mapper;
 
-    public CreatePostCommentReplyHandler(IPostCommentService service, IHttpContextAccessor contextAccessor)
+    public CreatePostCommentReplyHandler(IUnitOfWork unitOfWork, IHttpContextAccessor contextAccessor, UserManager<Entities.AppUser> userManager, IMapper mapper)
     {
-        _service = service;
+        _unitOfWork = unitOfWork;
         _contextAccessor = contextAccessor;
+        _userManager = userManager;
+        _mapper = mapper;
     }
 
-    public async Task Handle(CreatePostCommentReplyCommand request, CancellationToken cancellationToken)
+    public async Task<Response> Handle(CreatePostCommentReplyCommand request, CancellationToken cancellationToken)
     {
-        string username = _contextAccessor.HttpContext?.User.FindFirstValue("username") ?? throw new ExternalException("Token not found!");
+        string? username = _contextAccessor.HttpContext?.User.FindFirstValue("username");
+        if (username is null)
+            return new Response
+            {
+                StatusCode = HttpStatusCode.Unauthorized,
+                MessageCode = MessageCode.TokenNotFound
+            };
 
-        await _service.CreateReplyAsync(request.Reply, username);
-        await _service.SaveChangesAsync();
+        await _unitOfWork.BeginTransactionAsync();
+
+        try
+        {
+            Entities.AppUser? user = await _userManager.FindByNameAsync(username);
+            if (user is null)
+            {
+                await _unitOfWork.RollbackTransactionAsync();
+                return new Response
+                {
+                    StatusCode = HttpStatusCode.NotFound,
+                    MessageCode = MessageCode.UserNotExists
+                };
+            }
+
+            Entities.PostComment reply = _mapper.Map<Entities.PostComment>(request);
+            Entities.PostComment? comment = await _unitOfWork.PostCommentRepository.GetOneAsync(e =>
+                e.Id == request.ParentId &&
+                !e.IsDeleted &&
+                !e.Post.IsDeleted, true, "Post");
+            if (comment is null)
+            {
+                await _unitOfWork.RollbackTransactionAsync();
+                return new Response
+                {
+                    StatusCode = HttpStatusCode.NotFound,
+                    MessageCode = MessageCode.CommentNotExists
+                };
+            }
+
+            bool isMy = comment.Post.UserId == user.Id;
+            bool isFriend = isMy || await _unitOfWork.UserRelationRepository.IsFriendAsync(user.Id, comment.Post.UserId);
+
+            if ((comment.Post.Visibility == PostVisibility.Friends && !isFriend) ||
+                (comment.Post.Visibility == PostVisibility.Private && !isMy))
+            {
+                await _unitOfWork.RollbackTransactionAsync();
+                return new Response
+                {
+                    StatusCode = HttpStatusCode.NotFound,
+                    MessageCode = MessageCode.CommentNotExists
+                };
+            }
+
+            comment.ReplyCount++;
+            comment.Post.CommentCount++;
+            reply.UserId = user.Id;
+            reply.PostId = comment.PostId;
+            await _unitOfWork.PostCommentRepository.CreateAsync(reply);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            await _unitOfWork.CommitTransactionAsync();
+
+            return new Response
+            {
+                StatusCode = HttpStatusCode.Created
+            };
+        }
+        catch (Exception)
+        {
+            await _unitOfWork.RollbackTransactionAsync();
+            throw;
+        }
     }
 }

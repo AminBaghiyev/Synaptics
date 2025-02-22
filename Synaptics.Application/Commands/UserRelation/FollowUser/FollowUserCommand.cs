@@ -1,8 +1,9 @@
 ﻿using MediatR;
+using Synaptics.Application.Common;
 
 namespace Synaptics.Application.Commands.UserRelation.FollowUser;
 
-public class FollowUserCommand : IRequest
+public record FollowUserCommand : IRequest<Response>
 {
     public string FollowTo { get; set; }
 }

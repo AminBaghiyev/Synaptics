@@ -10,14 +10,13 @@ using Synaptics.Application.Commands.AppUser.RegisterAppUser;
 using Synaptics.Application.Commands.UserRelation.FollowUser;
 using Synaptics.Application.Commands.UserRelation.RemoveFollower;
 using Synaptics.Application.Commands.UserRelation.UnfollowUser;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Common;
 using Synaptics.Application.Exceptions.Base;
-using Synaptics.Application.Queries.AppUser.AISearchAppUser;
 using Synaptics.Application.Queries.AppUser.GetAppUserInfo;
 using Synaptics.Application.Queries.AppUser.GetAppUserProfile;
-using Synaptics.Application.Queries.AppUser.SearchAppUser;
 using Synaptics.Application.Queries.UserRelation.Followers;
 using Synaptics.Application.Queries.UserRelation.Followings;
+using System.Net;
 
 namespace Synaptics.Presentation.Controllers.v1;
 
@@ -33,263 +32,380 @@ public class UserController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("ai-search")]
-    public async Task<IActionResult> AISearch([FromQuery] string query, ulong offset)
+    [HttpGet]
+    public async Task<Response> Profile([FromQuery] GetAppUserProfileQuery query)
     {
         try
         {
-            return Ok(await _mediator.Send(new AISearchAppUserQuery { Query = query, Offset = offset }));
+            Response response = await _mediator.Send(query);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
-    [HttpGet("search")]
-    public async Task<IActionResult> Search([FromQuery] string query, int offset)
+    [HttpGet("followers")]
+    public async Task<Response> UserFollowers([FromQuery] FollowersQuery query)
     {
         try
         {
-            return Ok(await _mediator.Send(new SearchAppUserQuery { Query = query, Offset = offset }));
+            Response response = await _mediator.Send(query);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
-    [HttpGet("{username}")]
-    public async Task<IActionResult> Profile([FromRoute] string username)
+    [HttpGet("followings")]
+    public async Task<Response> UserFollowings([FromQuery] FollowingsQuery query)
     {
         try
         {
-            return Ok(await _mediator.Send(new GetAppUserProfileQuery { UserName = username }));
+            Response response = await _mediator.Send(query);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
-        }
-    }
-
-    [HttpGet("{username}/followers")]
-    public async Task<IActionResult> UserFollowers([FromRoute] string username, [FromQuery] int page)
-    {
-        try
-        {
-            return Ok(await _mediator.Send(new FollowersQuery { UserName = username, Page = page }));
-        }
-        catch (ExternalException ex)
-        {
-            return BadRequest(ex.Message);
-        }
-        catch (Exception)
-        {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
-        }
-    }
-
-    [HttpGet("{username}/followings")]
-    public async Task<IActionResult> UserFollowings([FromRoute] string username, [FromQuery] int page)
-    {
-        try
-        {
-            return Ok(await _mediator.Send(new FollowingsQuery { UserName = username, Page = page }));
-        }
-        catch (ExternalException ex)
-        {
-            return BadRequest(ex.Message);
-        }
-        catch (Exception)
-        {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
     [HttpGet("getUserInfo")]
-    public async Task<IActionResult> GetUserInfo()
+    public async Task<Response> GetUserInfo()
     {
         try
         {
-            return Ok(await _mediator.Send(new GetAppUserInfoQuery()));
+            Response response = await _mediator.Send(new GetAppUserInfoQuery());
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginAppUserDTO dto)
+    public async Task<Response> Login([FromBody] LoginAppUserCommand command)
     {
         try
         {
-            return Ok(await _mediator.Send(new LoginAppUserCommand { AppUser = dto }));
+            Response response = await _mediator.Send(command);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromForm] RegisterAppUserDTO dto)
+    public async Task<Response> Register([FromForm] RegisterAppUserCommand command)
     {
         try
         {
-            return Ok(await _mediator.Send(new RegisterAppUserCommand { AppUser = dto }));
+            Response response = await _mediator.Send(command);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
     [HttpPut("changePassword")]
-    public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordAppUserDTO dto)
+    public async Task<Response> ChangePassword([FromBody] ChangePasswordAppUserCommand command)
     {
         try
         {
-            await _mediator.Send(new ChangePasswordAppUserCommand { Passwords = dto });
-            return Ok();
+            Response response = await _mediator.Send(command);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
     [HttpPut("changeProfilePhoto")]
-    public async Task<IActionResult> ChangeProfilePhoto([FromForm] ChangeProfilePhotoAppUserDTO dto)
+    public async Task<Response> ChangeProfilePhoto([FromForm] ChangeProfilePhotoAppUserCommand command)
     {
         try
         {
-            return Ok(await _mediator.Send(new ChangeProfilePhotoAppUserCommand { File = dto }));
+            Response response = await _mediator.Send(command);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
     [HttpPut("changeCoverPhoto")]
-    public async Task<IActionResult> ChangeCoverPhoto([FromForm] ChangeCoverPhotoAppUserDTO dto)
+    public async Task<Response> ChangeCoverPhoto([FromForm] ChangeCoverPhotoAppUserCommand command)
     {
         try
         {
-            return Ok(await _mediator.Send(new ChangeCoverPhotoAppUserCommand { File = dto }));
+            Response response = await _mediator.Send(command);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
     [HttpPut("changeUserInfo")]
-    public async Task<IActionResult> ChangeUserInfo([FromBody] ChangeAppUserInfoDTO dto)
+    public async Task<Response> ChangeUserInfo([FromBody] ChangeAppUserInfoCommand command)
     {
         try
         {
-            await _mediator.Send(new ChangeAppUserInfoCommand { Info = dto });
-            return Ok();
+            Response response = await _mediator.Send(command);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
-    [HttpPost("{username}/follow")]
-    public async Task<IActionResult> FollowUser([FromRoute] string username)
+    [HttpPost("follow")]
+    public async Task<Response> FollowUser([FromBody] FollowUserCommand command)
     {
         try
         {
-            await _mediator.Send(new FollowUserCommand { FollowTo = username });
-            return Ok();
+            Response response = await _mediator.Send(command);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
-    [HttpPost("{username}/unfollow")]
-    public async Task<IActionResult> UnfollowUser([FromRoute] string username)
+    [HttpPost("unfollow")]
+    public async Task<Response> UnfollowUser([FromBody] UnfollowUserCommand command)
     {
         try
         {
-            await _mediator.Send(new UnfollowUserCommand { UnfollowTo = username });
-            return Ok();
+            Response response = await _mediator.Send(command);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 
-    [HttpPost("{username}/removefollow")]
-    public async Task<IActionResult> RemoveFollower([FromRoute] string username)
+    [HttpPost("removefollow")]
+    public async Task<Response> RemoveFollower([FromBody] RemoveFollowerCommand command)
     {
         try
         {
-            await _mediator.Send(new RemoveFollowerCommand { Follower = username });
-            return Ok();
+            Response response = await _mediator.Send(command);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
         }
         catch (ExternalException ex)
         {
-            return BadRequest(ex.Message);
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong!");
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
         }
     }
 }

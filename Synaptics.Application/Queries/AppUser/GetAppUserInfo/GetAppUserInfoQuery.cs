@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Common;
 
 namespace Synaptics.Application.Queries.AppUser.GetAppUserInfo;
 
-public class GetAppUserInfoQuery : IRequest<ChangeAppUserInfoDTO>
+public record GetAppUserInfoQuery : IRequest<Response>
 {
 }

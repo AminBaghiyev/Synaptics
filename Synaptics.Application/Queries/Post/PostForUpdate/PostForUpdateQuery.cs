@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Common;
 
 namespace Synaptics.Application.Queries.Post.PostForUpdate;
 
-public class PostForUpdateQuery : IRequest<UpdatePostDTO>
+public record PostForUpdateQuery : IRequest<Response>
 {
     public long Id { get; set; }
 }

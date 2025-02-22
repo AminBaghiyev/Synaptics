@@ -84,6 +84,4 @@ public class Repository<T> : IRepository<T> where T : BaseEntity, new()
     {
         Table.Remove(entity);
     }
-
-    public async Task<int> SaveChangesAsync() => await _context.SaveChangesAsync();
 }

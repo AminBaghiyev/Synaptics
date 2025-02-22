@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Common;
 
 namespace Synaptics.Application.Queries.PostCommentReply.RepliesOfPostComment;
 
-public class RepliesOfPostCommentQuery : IRequest<ICollection<PostCommentItemDTO>>
+public record RepliesOfPostCommentQuery : IRequest<Response>
 {
     public long ParentId { get; set; }
     public int Page { get; set; }

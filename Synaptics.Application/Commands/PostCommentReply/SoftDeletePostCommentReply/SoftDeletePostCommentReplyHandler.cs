@@ -1,27 +1,96 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
-using Synaptics.Application.Exceptions.Base;
+using Microsoft.AspNetCore.Identity;
+using Synaptics.Application.Common;
 using Synaptics.Application.Interfaces;
+using Synaptics.Domain.Enums;
+using System.Net;
 using System.Security.Claims;
+using Entities = Synaptics.Domain.Entities;
 
-namespace Synaptics.Application.Commands.Post.SoftDeletePostCommentReply;
+namespace Synaptics.Application.Commands.PostCommentReply.SoftDeletePostCommentReply;
 
-public class SoftDeletePostCommentReplyHandler : IRequestHandler<SoftDeletePostCommentReplyCommand>
+public class SoftDeletePostCommentReplyHandler : IRequestHandler<SoftDeletePostCommentReplyCommand, Response>
 {
-    readonly IPostCommentService _service;
+    readonly IUnitOfWork _unitOfWork;
     readonly IHttpContextAccessor _contextAccessor;
+    readonly UserManager<Entities.AppUser> _userManager;
 
-    public SoftDeletePostCommentReplyHandler(IPostCommentService service, IHttpContextAccessor contextAccessor)
+    public SoftDeletePostCommentReplyHandler(IUnitOfWork unitOfWork, IHttpContextAccessor contextAccessor, UserManager<Entities.AppUser> userManager)
     {
-        _service = service;
+        _unitOfWork = unitOfWork;
         _contextAccessor = contextAccessor;
+        _userManager = userManager;
     }
 
-    public async Task Handle(SoftDeletePostCommentReplyCommand request, CancellationToken cancellationToken)
+    public async Task<Response> Handle(SoftDeletePostCommentReplyCommand request, CancellationToken cancellationToken)
     {
-        string username = _contextAccessor.HttpContext?.User.FindFirstValue("username") ?? throw new ExternalException("Token not found!");
+        string? username = _contextAccessor.HttpContext?.User.FindFirstValue("username");
+        if (username is null)
+            return new Response
+            {
+                StatusCode = HttpStatusCode.Unauthorized,
+                MessageCode = MessageCode.TokenNotFound
+            };
 
-        await _service.SoftDeleteAsync(request.Id, username);
-        await _service.SaveChangesAsync();
+        await _unitOfWork.BeginTransactionAsync();
+
+        try
+        {
+            Entities.AppUser? user = await _userManager.FindByNameAsync(username);
+            if (user is null)
+            {
+                await _unitOfWork.RollbackTransactionAsync();
+                return new Response
+                {
+                    StatusCode = HttpStatusCode.NotFound,
+                    MessageCode = MessageCode.UserNotExists
+                };
+            }
+
+            Entities.PostComment? comment = await _unitOfWork.PostCommentRepository.GetOneAsync(
+                e =>
+                    e.Id == request.Id &&
+                    !e.IsDeleted &&
+                    !e.Post.IsDeleted &&
+                    !e.Parent.IsDeleted,
+                true, ["Post", "Parent"]);
+            if (comment is null)
+            {
+                await _unitOfWork.RollbackTransactionAsync();
+                return new Response
+                {
+                    StatusCode = HttpStatusCode.NotFound,
+                    MessageCode = MessageCode.CommentNotExists
+                };
+            }
+
+            if (comment.UserId != user.Id && comment.Post.UserId != user.Id)
+            {
+                await _unitOfWork.RollbackTransactionAsync();
+                return new Response
+                {
+                    StatusCode = HttpStatusCode.Unauthorized,
+                    MessageCode = MessageCode.YouArentAllowedDeleteComment
+                };
+            }
+
+            int deletedRepliesCount = await _unitOfWork.PostCommentRepository.SoftDeleteRepliesAsync(comment.Id);
+
+            comment.Post.CommentCount -= deletedRepliesCount;
+            comment.Parent.ReplyCount -= deletedRepliesCount;
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            await _unitOfWork.CommitTransactionAsync();
+
+            return new Response
+            {
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+        catch (Exception)
+        {
+            await _unitOfWork.RollbackTransactionAsync();
+            throw;
+        }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using MediatR;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Common;
+using Synaptics.Domain.Enums;
 
 namespace Synaptics.Application.Commands.Post.CreatePost;
 
-public class CreatePostCommand : IRequest
+public record CreatePostCommand : IRequest<Response>
 {
-    public CreatePostDTO Post { get; set; }
+    public string Thought { get; set; }
+    public PostVisibility Visibility { get; set; }
 }

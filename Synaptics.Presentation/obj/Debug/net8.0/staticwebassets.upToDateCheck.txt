@@ -4,4 +4,4 @@ wwwroot\uploads\cover_photos\9e64f3d7-7bb3-4ada-a2ad-51a15dc7691f.jpg
 wwwroot\uploads\profile_photos\06a5ea8d-1f96-43ee-a2fb-2556ef30067b86059.jpg
 wwwroot\uploads\profile_photos\08187fa3-9bcf-47c2-bb31-8adcd8020f8786059.jpg
 wwwroot\uploads\profile_photos\1961767c-c451-4268-9ed5-b25115c507d5.jpg
-wwwroot\uploads\profile_photos\ff2341e6-1350-46d1-9c67-0a7f36e798ed.png
+wwwroot\uploads\profile_photos\cbe38118-f419-4d8c-8752-b20bfce7ef17.jpg

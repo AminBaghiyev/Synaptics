@@ -12,5 +12,4 @@ public interface IPostLikeRepository
     Task<PostLike?> GetOneAsync(Expression<Func<PostLike, bool>> predicate, params string[] includes);
     Task CreateAsync(PostLike entity);
     void Delete(PostLike entity);
-    Task<int> SaveChangesAsync();
 }

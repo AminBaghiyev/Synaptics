@@ -12,5 +12,4 @@ public interface IUserRelationRepository
     Task<bool> IsFriendAsync(string firstUserId, string secondUserId);
     Task CreateAsync(UserRelation entity);
     void Delete(UserRelation entity);
-    Task<int> SaveChangesAsync();
 }

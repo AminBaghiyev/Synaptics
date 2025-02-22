@@ -1,9 +1,12 @@
 ﻿using MediatR;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Common;
+using Synaptics.Domain.Enums;
 
 namespace Synaptics.Application.Commands.Post.UpdatePost;
 
-public class UpdatePostCommand : IRequest
+public record UpdatePostCommand : IRequest<Response>
 {
-    public UpdatePostDTO Post { get; set; }
+    public long Id { get; set; }
+    public string Thought { get; set; }
+    public PostVisibility Visibility { get; set; }
 }

@@ -1,8 +1,9 @@
 ﻿using MediatR;
+using Synaptics.Application.Common;
 
-namespace Synaptics.Application.Commands.Post.LikePostCommentReply;
+namespace Synaptics.Application.Commands.PostCommentReply.LikePostCommentReply;
 
-public class LikePostCommentReplyCommand : IRequest
+public record LikePostCommentReplyCommand : IRequest<Response>
 {
     public long Id { get; set; }
 }

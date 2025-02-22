@@ -12,5 +12,4 @@ public interface ICommentLikeRepository
     Task<CommentLike?> GetOneAsync(Expression<Func<CommentLike, bool>> predicate, params string[] includes);
     Task CreateAsync(CommentLike entity);
     void Delete(CommentLike entity);
-    Task<int> SaveChangesAsync();
 }

@@ -1,9 +1,10 @@
 ﻿using MediatR;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Common;
 
-namespace Synaptics.Application.Commands.Post.CreatePostCommentReply;
+namespace Synaptics.Application.Commands.PostCommentReply.CreatePostCommentReply;
 
-public class CreatePostCommentReplyCommand : IRequest
+public record CreatePostCommentReplyCommand : IRequest<Response>
 {
-    public CreatePostCommentReplyDTO Reply { get; set; }
+    public string Content { get; set; }
+    public long ParentId { get; set; }
 }

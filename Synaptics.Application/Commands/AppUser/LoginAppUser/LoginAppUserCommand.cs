@@ -1,9 +1,10 @@
 ﻿using MediatR;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Common;
 
 namespace Synaptics.Application.Commands.AppUser.LoginAppUser;
 
-public class LoginAppUserCommand : IRequest<string>
+public record LoginAppUserCommand : IRequest<Response>
 {
-    public LoginAppUserDTO AppUser { get; set; }
+    public string UserName { get; set; }
+    public string Password { get; set; }
 }

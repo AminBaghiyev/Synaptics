@@ -1,20 +1,38 @@
-﻿using MediatR;
-using Synaptics.Application.DTOs;
-using Synaptics.Application.Interfaces;
+﻿using AutoMapper;
+using MediatR;
+using Microsoft.AspNetCore.Identity;
+using Synaptics.Application.Common;
+using Synaptics.Domain.Enums;
+using System.Net;
+using Entities = Synaptics.Domain.Entities;
 
 namespace Synaptics.Application.Queries.AppUser.GetAppUserProfile;
 
-public class GetAppUserProfileHandler : IRequestHandler<GetAppUserProfileQuery, GetAppUserProfileDTO>
+public class GetAppUserProfileHandler : IRequestHandler<GetAppUserProfileQuery, Response>
 {
-    readonly IAppUserService _userService;
+    readonly UserManager<Entities.AppUser> _userManager;
+    readonly IMapper _mapper;
 
-    public GetAppUserProfileHandler(IAppUserService userService)
+    public GetAppUserProfileHandler(UserManager<Entities.AppUser> userManager, IMapper mapper)
     {
-        _userService = userService;
+        _userManager = userManager;
+        _mapper = mapper;
     }
 
-    public async Task<GetAppUserProfileDTO> Handle(GetAppUserProfileQuery request, CancellationToken cancellationToken)
+    public async Task<Response> Handle(GetAppUserProfileQuery request, CancellationToken cancellationToken)
     {
-        return await _userService.GetProfileAsync(request.UserName);
+        Entities.AppUser? user = await _userManager.FindByNameAsync(request.UserName);
+        if (user is null)
+            return new Response
+            {
+                StatusCode = HttpStatusCode.NotFound,
+                MessageCode = MessageCode.UserNotExists
+            };
+
+        return new Response
+        {
+            StatusCode = HttpStatusCode.OK,
+            Data = _mapper.Map<GetAppUserProfileQueryResponse>(user)
+        };
     }
 }

@@ -5,7 +5,6 @@ using Synaptics.Application.Interfaces;
 using Synaptics.Application.Interfaces.Repositories;
 using Synaptics.Persistence.Data;
 using Synaptics.Persistence.Repositories;
-using Synaptics.Persistence.Services;
 
 namespace Synaptics.Persistence;
 
@@ -15,15 +14,11 @@ public static class DependencyInjection
     {
         services.AddDbContext<AppDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("local")));
 
-        services.AddScoped<IUserRelationRepository, UserRelationRepository>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IPostRepository, PostRepository>();
         services.AddScoped<IPostLikeRepository, PostLikeRepository>();
         services.AddScoped<IPostCommentRepository, PostCommentRepository>();
         services.AddScoped<ICommentLikeRepository, CommentLikeRepository>();
-        services.AddScoped<IPostRepository, PostRepository>();
-
-        services.AddScoped<IAppUserService, AppUserService>();
-        services.AddScoped<IUserRelationService, UserRelationService>();
-        services.AddScoped<IPostCommentService, PostCommentService>();
-        services.AddScoped<IPostService, PostService>();
+        services.AddScoped<IUserRelationRepository, UserRelationRepository>();
     }
 }

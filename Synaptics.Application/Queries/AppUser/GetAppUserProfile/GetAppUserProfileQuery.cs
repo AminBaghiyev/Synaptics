@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Common;
 
 namespace Synaptics.Application.Queries.AppUser.GetAppUserProfile;
 
-public class GetAppUserProfileQuery : IRequest<GetAppUserProfileDTO>
+public record GetAppUserProfileQuery : IRequest<Response>
 {
     public string UserName { get; set; }
 }

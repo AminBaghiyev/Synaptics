@@ -1,9 +1,10 @@
 ﻿using MediatR;
-using Synaptics.Application.DTOs;
+using Microsoft.AspNetCore.Http;
+using Synaptics.Application.Common;
 
 namespace Synaptics.Application.Commands.AppUser.ChangeCoverPhotoAppUser;
 
-public class ChangeCoverPhotoAppUserCommand : IRequest<string>
+public record ChangeCoverPhotoAppUserCommand : IRequest<Response>
 {
-    public ChangeCoverPhotoAppUserDTO File { get; set; }
+    public IFormFile CoverPhoto { get; set; }
 }

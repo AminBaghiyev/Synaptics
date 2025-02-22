@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Common;
 
 namespace Synaptics.Application.Queries.AppUser.AISearchAppUser;
 
-public class AISearchAppUserQuery : IRequest<ICollection<AISearchAppUserDTO>>
+public record AISearchAppUserQuery : IRequest<Response>
 {
-    public string Query { get; set; }
+    public string SearchQuery { get; set; }
     public ulong Offset { get; set; }
 }

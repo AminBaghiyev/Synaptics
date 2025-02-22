@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Common;
 
 namespace Synaptics.Application.Queries.AppUser.SearchAppUser;
 
-public class SearchAppUserQuery : IRequest<ICollection<SearchAppUserDTO>>
+public record SearchAppUserQuery : IRequest<Response>
 {
-    public string Query { get; set; }
+    public string SearchQuery { get; set; }
     public int Offset { get; set; }
 }

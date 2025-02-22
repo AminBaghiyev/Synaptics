@@ -1,7 +1,7 @@
 ﻿using Qdrant.Client;
 using Qdrant.Client.Grpc;
-using Synaptics.Application.Interfaces;
-using Synaptics.Domain.Results;
+using Synaptics.Application.Common.Results;
+using Synaptics.Application.Interfaces.Services;
 
 namespace Synaptics.Infrastructure.Services;
 

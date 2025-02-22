@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Synaptics.Application.Interfaces;
+using Synaptics.Application.Interfaces.Services;
 using Synaptics.Infrastructure.Services;
 
 namespace Synaptics.Infrastructure;

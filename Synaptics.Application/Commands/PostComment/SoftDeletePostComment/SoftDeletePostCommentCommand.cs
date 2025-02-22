@@ -1,8 +1,9 @@
 ﻿using MediatR;
+using Synaptics.Application.Common;
 
-namespace Synaptics.Application.Commands.Post.SoftDeletePostComment;
+namespace Synaptics.Application.Commands.PostComment.SoftDeletePostComment;
 
-public class SoftDeletePostCommentCommand : IRequest
+public record SoftDeletePostCommentCommand : IRequest<Response>
 {
     public long Id { get; set; }
 }

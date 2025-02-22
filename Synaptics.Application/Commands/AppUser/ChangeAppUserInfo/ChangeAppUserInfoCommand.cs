@@ -1,9 +1,14 @@
 ﻿using MediatR;
-using Synaptics.Application.DTOs;
+using Synaptics.Application.Common;
+using Synaptics.Domain.Enums;
 
 namespace Synaptics.Application.Commands.AppUser.ChangeAppUserInfo;
 
-public class ChangeAppUserInfoCommand : IRequest
+public record ChangeAppUserInfoCommand : IRequest<Response>
 {
-    public ChangeAppUserInfoDTO Info { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public Gender Gender { get; set; }
+    public string Biography { get; set; }
+    public string SelfDescription { get; set; }
 }

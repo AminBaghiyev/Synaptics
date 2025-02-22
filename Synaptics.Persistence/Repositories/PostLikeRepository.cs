@@ -84,6 +84,4 @@ public class PostLikeRepository : IPostLikeRepository
     {
         Table.Remove(entity);
     }
-
-    public async Task<int> SaveChangesAsync() => await _context.SaveChangesAsync();
 }

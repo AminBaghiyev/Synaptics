@@ -1,9 +1,10 @@
 ﻿using MediatR;
-using Synaptics.Application.DTOs;
+using Microsoft.AspNetCore.Http;
+using Synaptics.Application.Common;
 
 namespace Synaptics.Application.Commands.AppUser.ChangeProfilePhotoAppUser;
 
-public class ChangeProfilePhotoAppUserCommand : IRequest<string>
+public record ChangeProfilePhotoAppUserCommand : IRequest<Response>
 {
-    public ChangeProfilePhotoAppUserDTO File { get; set; }
+    public IFormFile ProfilePhoto { get; set; }
 }

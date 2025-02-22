@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
-using Synaptics.Application.Interfaces;
-using Synaptics.Domain.Results;
+using Synaptics.Application.Common.Results;
+using Synaptics.Application.Interfaces.Services;
 using System.Text;
 
 namespace Synaptics.Infrastructure.Services;

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Xcrh0ZCYR57xaT7B2+NaSfiV07Ru72qAgxA+o0+VKb4=",
+  "Hash": "ZxPGBLk1PVObla6a9lNMqiLpjsApsUsoBWDPfbutJRs=",
   "Source": "Synaptics.Presentation",
   "BasePath": "_content/Synaptics.Presentation",
   "Mode": "Default",
@@ -143,12 +143,12 @@
       "OriginalItemSpec": "wwwroot\\uploads\\profile_photos\\1961767c-c451-4268-9ed5-b25115c507d5.jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\ff2341e6-1350-46d1-9c67-0a7f36e798ed.png",
+      "Identity": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\cbe38118-f419-4d8c-8752-b20bfce7ef17.jpg",
       "SourceId": "Synaptics.Presentation",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\",
       "BasePath": "_content/Synaptics.Presentation",
-      "RelativePath": "uploads/profile_photos/ff2341e6-1350-46d1-9c67-0a7f36e798ed#[.{fingerprint}]?.png",
+      "RelativePath": "uploads/profile_photos/cbe38118-f419-4d8c-8752-b20bfce7ef17#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -157,11 +157,11 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "vsmlg307wf",
-      "Integrity": "Ud12kIzLke2LhaBP0yPzLF+l0+PPVZhL5wUYraI0v6A=",
+      "Fingerprint": "35yrfargbd",
+      "Integrity": "aZO3It77tnWbExXzkeU7GePBt9f8FYCkvqtk+EH0nY0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\profile_photos\\ff2341e6-1350-46d1-9c67-0a7f36e798ed.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\profile_photos\\cbe38118-f419-4d8c-8752-b20bfce7ef17.jpg"
     }
   ],
   "Endpoints": [
@@ -658,8 +658,8 @@
       ]
     },
     {
-      "Route": "uploads/profile_photos/ff2341e6-1350-46d1-9c67-0a7f36e798ed.png",
-      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\ff2341e6-1350-46d1-9c67-0a7f36e798ed.png",
+      "Route": "uploads/profile_photos/cbe38118-f419-4d8c-8752-b20bfce7ef17.35yrfargbd.jpg",
+      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\cbe38118-f419-4d8c-8752-b20bfce7ef17.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -668,56 +668,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "130377"
+          "Value": "27531"
         },
         {
           "Name": "Content-Type",
-          "Value": "image/png"
+          "Value": "image/jpeg"
         },
         {
           "Name": "ETag",
-          "Value": "\"Ud12kIzLke2LhaBP0yPzLF+l0+PPVZhL5wUYraI0v6A=\""
+          "Value": "\"aZO3It77tnWbExXzkeU7GePBt9f8FYCkvqtk+EH0nY0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 15 Feb 2025 13:58:39 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Ud12kIzLke2LhaBP0yPzLF+l0+PPVZhL5wUYraI0v6A="
-        }
-      ]
-    },
-    {
-      "Route": "uploads/profile_photos/ff2341e6-1350-46d1-9c67-0a7f36e798ed.vsmlg307wf.png",
-      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\ff2341e6-1350-46d1-9c67-0a7f36e798ed.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "130377"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Ud12kIzLke2LhaBP0yPzLF+l0+PPVZhL5wUYraI0v6A=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 15 Feb 2025 13:58:39 GMT"
+          "Value": "Sat, 22 Feb 2025 01:47:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -727,15 +690,52 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "vsmlg307wf"
+          "Value": "35yrfargbd"
         },
         {
           "Name": "label",
-          "Value": "uploads/profile_photos/ff2341e6-1350-46d1-9c67-0a7f36e798ed.png"
+          "Value": "uploads/profile_photos/cbe38118-f419-4d8c-8752-b20bfce7ef17.jpg"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Ud12kIzLke2LhaBP0yPzLF+l0+PPVZhL5wUYraI0v6A="
+          "Value": "sha256-aZO3It77tnWbExXzkeU7GePBt9f8FYCkvqtk+EH0nY0="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/profile_photos/cbe38118-f419-4d8c-8752-b20bfce7ef17.jpg",
+      "AssetFile": "C:\\Users\\USER\\Desktop\\AB205\\Synaptics\\Synaptics.Presentation\\wwwroot\\uploads\\profile_photos\\cbe38118-f419-4d8c-8752-b20bfce7ef17.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27531"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aZO3It77tnWbExXzkeU7GePBt9f8FYCkvqtk+EH0nY0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 22 Feb 2025 01:47:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-aZO3It77tnWbExXzkeU7GePBt9f8FYCkvqtk+EH0nY0="
         }
       ]
     }
