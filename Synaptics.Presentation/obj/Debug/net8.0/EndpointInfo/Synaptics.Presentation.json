@@ -1481,6 +1481,102 @@
         }
       }
     },
+    "/api/v1/user/resetPasswordRequest": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendResetPasswordAppUserCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendResetPasswordAppUserCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendResetPasswordAppUserCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/resetPassword": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordAppUserCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordAppUserCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordAppUserCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/user/changePassword": {
       "put": {
         "tags": [
@@ -1925,6 +2021,10 @@
             "type": "string",
             "nullable": true
           },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
           "gender": {
             "$ref": "#/components/schemas/Gender"
           },
@@ -2195,6 +2295,24 @@
         },
         "additionalProperties": false
       },
+      "ResetPasswordAppUserCommand": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "nullable": true
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Response": {
         "type": "object",
         "properties": {
@@ -2205,6 +2323,16 @@
             "$ref": "#/components/schemas/MessageCode"
           },
           "data": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SendResetPasswordAppUserCommand": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
             "nullable": true
           }
         },

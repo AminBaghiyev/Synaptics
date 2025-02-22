@@ -240,6 +240,10 @@
               "target": "Package",
               "version": "[8.4.0, )"
             },
+            "RazorLight": {
+              "target": "Package",
+              "version": "[2.3.1, )"
+            },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.4.0, )"

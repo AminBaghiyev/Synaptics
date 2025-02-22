@@ -15,6 +15,10 @@ public class ChangeAppUserInfoValidator : AbstractValidator<ChangeAppUserInfoCom
             .NotEmpty().WithMessage("Last name is required")
             .Length(2, 50).WithMessage("Last name must be between 2 and 50 characters");
 
+        RuleFor(x => x.Email)
+            .NotEmpty().WithMessage("Email is required")
+            .EmailAddress().WithMessage("Invalid email address format");
+
         RuleFor(x => x.Gender)
             .IsInEnum().WithMessage("Gender is required and must be a valid enum value");
 

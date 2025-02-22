@@ -1036,6 +1036,58 @@
     ]
   },
   {
+    "ContainingType": "Synaptics.Presentation.Controllers.v1.UserController",
+    "Method": "ResetPasssword",
+    "RelativePath": "api/v1/user/resetPassword",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "Synaptics.Application.Commands.AppUser.ResetPasswordAppUser.ResetPasswordAppUserCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Synaptics.Application.Common.Response",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Synaptics.Presentation.Controllers.v1.UserController",
+    "Method": "ResetPassswordRequest",
+    "RelativePath": "api/v1/user/resetPasswordRequest",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "Synaptics.Application.Commands.AppUser.SendResetPasswordAppUser.SendResetPasswordAppUserCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Synaptics.Application.Common.Response",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Synaptics.Presentation.Controllers.v1.UserSearchController",
     "Method": "Search",
     "RelativePath": "api/v1/user/search",

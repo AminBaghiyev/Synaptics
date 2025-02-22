@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Synaptics.Persistence")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dfffbd178a8432c22f88ecf6fc4bb8e9a96c821a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+231e3684a7e39cecb765e155e97a4ef0cfd6415d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Synaptics.Persistence")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Synaptics.Persistence")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

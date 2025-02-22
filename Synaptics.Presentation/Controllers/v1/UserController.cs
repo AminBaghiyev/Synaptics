@@ -7,6 +7,8 @@ using Synaptics.Application.Commands.AppUser.ChangePasswordAppUser;
 using Synaptics.Application.Commands.AppUser.ChangeProfilePhotoAppUser;
 using Synaptics.Application.Commands.AppUser.LoginAppUser;
 using Synaptics.Application.Commands.AppUser.RegisterAppUser;
+using Synaptics.Application.Commands.AppUser.ResetPasswordAppUser;
+using Synaptics.Application.Commands.AppUser.SendResetPasswordAppUser;
 using Synaptics.Application.Commands.UserRelation.FollowUser;
 using Synaptics.Application.Commands.UserRelation.RemoveFollower;
 using Synaptics.Application.Commands.UserRelation.UnfollowUser;
@@ -179,6 +181,64 @@ public class UserController : ControllerBase
 
     [HttpPost("register")]
     public async Task<Response> Register([FromForm] RegisterAppUserCommand command)
+    {
+        try
+        {
+            Response response = await _mediator.Send(command);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
+        }
+        catch (ExternalException ex)
+        {
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
+        }
+        catch (Exception)
+        {
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
+        }
+    }
+
+    [HttpPost("resetPasswordRequest")]
+    public async Task<Response> ResetPassswordRequest([FromBody] SendResetPasswordAppUserCommand command)
+    {
+        try
+        {
+            Response response = await _mediator.Send(command);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
+        }
+        catch (ExternalException ex)
+        {
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
+        }
+        catch (Exception)
+        {
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
+        }
+    }
+
+    [HttpPost("resetPassword")]
+    public async Task<Response> ResetPasssword([FromBody] ResetPasswordAppUserCommand command)
     {
         try
         {

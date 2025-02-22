@@ -39,6 +39,21 @@ public class ChangeAppUserInfoHandler : IRequestHandler<ChangeAppUserInfoCommand
                 MessageCode = MessageCode.TokenNotFound
             };
 
+        Entities.AppUser? user = await _userManager.FindByNameAsync(username);
+        if (user is null)
+            return new Response
+            {
+                StatusCode = HttpStatusCode.NotFound,
+                MessageCode = MessageCode.UserNotExists
+            };
+
+        if (user.NormalizedEmail != request.Email.ToUpper() && await _userManager.FindByEmailAsync(request.Email.ToUpper()) is not null)
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                MessageCode = MessageCode.UserExistsThisEmail
+            };
+
         (PyBridgeResult pyRes, float[] selfDescriptionEmbedding) = await _pyBridgeService.EmbeddingAsync(request.SelfDescription);
 
         if (!pyRes.Succeeded)
@@ -46,14 +61,6 @@ public class ChangeAppUserInfoHandler : IRequestHandler<ChangeAppUserInfoCommand
             {
                 StatusCode = HttpStatusCode.InternalServerError,
                 MessageCode = MessageCode.SomethingWrong
-            };
-
-        Entities.AppUser? user = await _userManager.FindByNameAsync(username);
-        if (user is null)
-            return new Response
-            {
-                StatusCode = HttpStatusCode.NotFound,
-                MessageCode = MessageCode.UserNotExists
             };
 
         Entities.AppUser oldUser = _mapper.Map<Entities.AppUser>(user);
