@@ -1,5 +1,31 @@
 [
   {
+    "ContainingType": "Synaptics.Presentation.Controllers.v1.ChatController",
+    "Method": "Messages",
+    "RelativePath": "api/v1/chat",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "query",
+        "Type": "Synaptics.Application.Queries.Message.MessagesBetweenUsers.MessagesBetweenUsersQuery",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Synaptics.Application.Common.Response",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Synaptics.Presentation.Controllers.v1.PostController",
     "Method": "Post",
     "RelativePath": "api/v1/post",

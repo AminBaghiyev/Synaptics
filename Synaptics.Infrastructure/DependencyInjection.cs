@@ -8,10 +8,12 @@ public static class DependencyInjection
 {
     public static void AddInfrastructure(this IServiceCollection services)
     {
+        services.AddSignalR();
         services.AddSingleton<IJWTTokenService, JWTTokenService>();
         services.AddSingleton<IFileService, FileService>();
         services.AddSingleton<IPyBridgeService, PyBridgeService>();
         services.AddSingleton<IQdrantService, QdrantService>();
+        services.AddSingleton<ICassandraService, CassandraService>();
         services.AddSingleton<IRedisService, RedisService>();
         services.AddSingleton<IEmailService, EmailService>();
         services.AddSingleton<IUserDeviceInfoService, UserDeviceInfoService>();

@@ -10,6 +10,7 @@ using Synaptics.Domain.Entities;
 using Synaptics.Infrastructure;
 using Synaptics.Persistence;
 using Synaptics.Persistence.Data;
+using Synaptics.Presentation.Hubs;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -70,9 +71,31 @@ builder.Services.AddAuthentication(cfg => {
             ValidAudience = builder.Configuration["JWT:Audience"],
             ValidIssuer = builder.Configuration["JWT:Issuer"]
         };
+        x.Events = new JwtBearerEvents
+        {
+            OnMessageReceived = context => {
+                var accessToken = context.Request.Query["access_token"];
+                var path = context.HttpContext.Request.Path;
+                if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/MessageHub"))
+                {
+                    context.Token = accessToken;
+                }
+                return Task.CompletedTask;
+            }
+        };
     });
 
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.SetIsOriginAllowed(_ => true)
+               .AllowAnyHeader()
+               .AllowAnyMethod()
+               .AllowCredentials();
+    });
+});
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Synaptics - V1", Version = "v1.0" });
@@ -95,8 +118,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseRouting();
+app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
+app.MapHub<MessageHub>("/MessageHub");
 app.MapControllers();
 
 app.Run();

@@ -5,6 +5,54 @@
     "version": "v1.0"
   },
   "paths": {
+    "/api/v1/chat": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MessagesBetweenUsersQuery"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MessagesBetweenUsersQuery"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MessagesBetweenUsersQuery"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/post": {
       "get": {
         "tags": [
@@ -2467,6 +2515,21 @@
         ],
         "type": "integer",
         "format": "int32"
+      },
+      "MessagesBetweenUsersQuery": {
+        "type": "object",
+        "properties": {
+          "receiver": {
+            "type": "string",
+            "nullable": true
+          },
+          "pagingState": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
       },
       "PostVisibility": {
         "enum": [

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Synaptics.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f83a6b131c70941a9764d4da92856fa0d80da05")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+74b0e1004b1af4fcd9baa11516349503d1fb1c67")]
 [assembly: System.Reflection.AssemblyProductAttribute("Synaptics.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Synaptics.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
