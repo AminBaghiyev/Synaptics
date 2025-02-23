@@ -6,6 +6,7 @@ using Synaptics.Application.Commands.AppUser.ChangeCoverPhotoAppUser;
 using Synaptics.Application.Commands.AppUser.ChangePasswordAppUser;
 using Synaptics.Application.Commands.AppUser.ChangeProfilePhotoAppUser;
 using Synaptics.Application.Commands.AppUser.LoginAppUser;
+using Synaptics.Application.Commands.AppUser.LogoutAppUser;
 using Synaptics.Application.Commands.AppUser.RegisterAppUser;
 using Synaptics.Application.Commands.AppUser.ResetPasswordAppUser;
 using Synaptics.Application.Commands.AppUser.SendResetPasswordAppUser;
@@ -14,6 +15,7 @@ using Synaptics.Application.Commands.UserRelation.RemoveFollower;
 using Synaptics.Application.Commands.UserRelation.UnfollowUser;
 using Synaptics.Application.Common;
 using Synaptics.Application.Exceptions.Base;
+using Synaptics.Application.Queries.AppUser.GetAccessTokenAppUser;
 using Synaptics.Application.Queries.AppUser.GetAppUserInfo;
 using Synaptics.Application.Queries.AppUser.GetAppUserProfile;
 using Synaptics.Application.Queries.UserRelation.Followers;
@@ -127,6 +129,64 @@ public class UserController : ControllerBase
         try
         {
             Response response = await _mediator.Send(new GetAppUserInfoQuery());
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
+        }
+        catch (ExternalException ex)
+        {
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
+        }
+        catch (Exception)
+        {
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
+        }
+    }
+
+    [HttpGet("accessToken")]
+    public async Task<Response> GetAccessToken([FromQuery] GetAccessTokenAppUserQuery query)
+    {
+        try
+        {
+            Response response = await _mediator.Send(query);
+            HttpContext.Response.StatusCode = (int)response.StatusCode;
+            return response;
+        }
+        catch (ExternalException ex)
+        {
+            HttpContext.Response.StatusCode = 400;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.BadRequest,
+                Data = ex.Message
+            };
+        }
+        catch (Exception)
+        {
+            HttpContext.Response.StatusCode = 500;
+            return new Response
+            {
+                StatusCode = HttpStatusCode.InternalServerError,
+                Data = "Something went wrong!"
+            };
+        }
+    }
+
+    [HttpPost("logout")]
+    public async Task<Response> Logout([FromBody] LogoutAppUserCommand command)
+    {
+        try
+        {
+            Response response = await _mediator.Send(command);
             HttpContext.Response.StatusCode = (int)response.StatusCode;
             return response;
         }

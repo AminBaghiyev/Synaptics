@@ -458,3 +458,5 @@ C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Presentation\obj\Debug\net8.0\re
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Presentation\obj\Debug\net8.0\Synaptics.Presentation.pdb
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Presentation\obj\Debug\net8.0\Synaptics.Presentation.genruntimeconfig.cache
 C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Presentation\obj\Debug\net8.0\ref\Synaptics.Presentation.dll
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Presentation\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\USER\Desktop\AB205\Synaptics\Synaptics.Presentation\bin\Debug\net8.0\StackExchange.Redis.dll

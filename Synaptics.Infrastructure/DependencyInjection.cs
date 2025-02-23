@@ -12,6 +12,8 @@ public static class DependencyInjection
         services.AddSingleton<IFileService, FileService>();
         services.AddSingleton<IPyBridgeService, PyBridgeService>();
         services.AddSingleton<IQdrantService, QdrantService>();
+        services.AddSingleton<IRedisService, RedisService>();
         services.AddSingleton<IEmailService, EmailService>();
+        services.AddSingleton<IUserDeviceInfoService, UserDeviceInfoService>();
     }
 }

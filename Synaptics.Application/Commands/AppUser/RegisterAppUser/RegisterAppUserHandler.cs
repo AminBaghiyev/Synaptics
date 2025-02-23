@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json;
 using Synaptics.Application.Common;
 using Synaptics.Application.Common.Results;
 using Synaptics.Application.Exceptions;
 using Synaptics.Application.Interfaces.Services;
 using Synaptics.Domain.Enums;
 using System.Net;
-using System.Security.Claims;
 using Entities = Synaptics.Domain.Entities;
 
 namespace Synaptics.Application.Commands.AppUser.RegisterAppUser;
@@ -19,9 +19,11 @@ public class RegisterAppUserHandler : IRequestHandler<RegisterAppUserCommand, Re
     readonly IQdrantService _qdrantService;
     readonly IPyBridgeService _pyBridgeService;
     readonly IJWTTokenService _jwtTokenService;
+    readonly IRedisService _redisService;
+    readonly IUserDeviceInfoService _userDeviceInfoService;
     readonly IMapper _mapper;
 
-    public RegisterAppUserHandler(IFileService fileService, UserManager<Entities.AppUser> userManager, IQdrantService qdrantService, IPyBridgeService pyBridgeService, IMapper mapper, IJWTTokenService jwtTokenService)
+    public RegisterAppUserHandler(IFileService fileService, UserManager<Entities.AppUser> userManager, IQdrantService qdrantService, IPyBridgeService pyBridgeService, IMapper mapper, IJWTTokenService jwtTokenService, IRedisService redisService, IUserDeviceInfoService userDeviceInfoService)
     {
         _fileService = fileService;
         _userManager = userManager;
@@ -29,6 +31,8 @@ public class RegisterAppUserHandler : IRequestHandler<RegisterAppUserCommand, Re
         _pyBridgeService = pyBridgeService;
         _mapper = mapper;
         _jwtTokenService = jwtTokenService;
+        _redisService = redisService;
+        _userDeviceInfoService = userDeviceInfoService;
     }
 
     public async Task<Response> Handle(RegisterAppUserCommand request, CancellationToken cancellationToken)
@@ -87,20 +91,19 @@ public class RegisterAppUserHandler : IRequestHandler<RegisterAppUserCommand, Re
         if (request.ProfilePhoto is not null) user.ProfilePhotoPath = await _fileService.SaveImageAsync(request.ProfilePhoto, "profile_photos");
         if (request.CoverPhoto is not null) user.CoverPhotoPath = await _fileService.SaveImageAsync(request.CoverPhoto, "cover_photos", 1500, 500);
 
-        IEnumerable<Claim> claims =
-        [
-            new("sub", user.Id),
-            new("firstname", user.FirstName),
-            new("lastname", user.LastName),
-            new("username", user.UserName),
-            new("email", user.Email),
-            new("gender", user.Gender.ToString())
-        ];
+        string refreshToken = _jwtTokenService.GenerateRefreshToken();
+        string deviceInfo = JsonConvert.SerializeObject(_userDeviceInfoService.GetDeviceInfo());
+
+        await _redisService.SetHashAsync($"{user.UserName}:refresh_tokens", refreshToken, deviceInfo, TimeSpan.FromDays(7));
 
         return new Response
         {
             StatusCode = HttpStatusCode.Created,
-            Data = _jwtTokenService.GenerateToken(claims)
+            Data = new
+            {
+                AccessToken = _jwtTokenService.GenerateToken([new("username", user.UserName)], TimeSpan.FromMinutes(15)),
+                RefreshToken = _jwtTokenService.GenerateToken([new("token", refreshToken)], TimeSpan.FromDays(7))
+            }
         };
     }
 }

@@ -4,10 +4,12 @@ public enum MessageCode
 {
     SomethingWrong,
     TokenNotFound,
+    SessionNotFound,
     CredentialsWrong,
     UserNotExists,
     UserExistsThisEmail, 
     UserExistsThisUserName,
+    PasswordsCantBeSame,
     YouCantFollowYourself,
     YouDoNotFollowYourselfAnyway,
     PostNotExists,

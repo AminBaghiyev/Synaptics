@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json;
 using Synaptics.Application.Common;
 using Synaptics.Application.Interfaces.Services;
 using Synaptics.Domain.Enums;
 using System.Net;
-using System.Security.Claims;
 using Entities = Synaptics.Domain.Entities;
 
 namespace Synaptics.Application.Commands.AppUser.LoginAppUser;
@@ -13,11 +13,15 @@ public class LoginAppUserHandler : IRequestHandler<LoginAppUserCommand, Response
 {
     readonly UserManager<Entities.AppUser> _userManager;
     readonly IJWTTokenService _jWTTokenService;
+    readonly IRedisService _redisService;
+    readonly IUserDeviceInfoService _userDeviceInfoService;
 
-    public LoginAppUserHandler(UserManager<Entities.AppUser> userManager, IJWTTokenService jWTTokenService)
+    public LoginAppUserHandler(UserManager<Entities.AppUser> userManager, IJWTTokenService jWTTokenService, IRedisService redisService, IUserDeviceInfoService userDeviceInfoService)
     {
         _userManager = userManager;
         _jWTTokenService = jWTTokenService;
+        _redisService = redisService;
+        _userDeviceInfoService = userDeviceInfoService;
     }
 
     public async Task<Response> Handle(LoginAppUserCommand request, CancellationToken cancellationToken)
@@ -39,20 +43,19 @@ public class LoginAppUserHandler : IRequestHandler<LoginAppUserCommand, Response
                 MessageCode = MessageCode.CredentialsWrong
             };
 
-        IEnumerable<Claim> claims =
-        [
-            new("sub", user.Id),
-            new("firstname", user.FirstName),
-            new("lastname", user.LastName),
-            new("username", user.UserName),
-            new("email", user.Email),
-            new("gender", user.Gender.ToString())
-        ];
+        string refreshToken = _jWTTokenService.GenerateRefreshToken();
+        string deviceInfo = JsonConvert.SerializeObject(_userDeviceInfoService.GetDeviceInfo());
+
+        await _redisService.SetHashAsync($"{user.UserName}:refresh_tokens", refreshToken, deviceInfo, TimeSpan.FromDays(7));
 
         return new Response
         {
             StatusCode = HttpStatusCode.OK,
-            Data = _jWTTokenService.GenerateToken(claims)
+            Data = new
+            {
+                AccessToken = _jWTTokenService.GenerateToken([new("username", user.UserName)], TimeSpan.FromMinutes(15)),
+                RefreshToken = _jWTTokenService.GenerateToken([new("token", refreshToken)], TimeSpan.FromDays(7))
+            }
         };
     }
 }

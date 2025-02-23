@@ -4,6 +4,7 @@ using Synaptics.Application.Interfaces.Services;
 using Synaptics.Infrastructure.Exceptions;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Synaptics.Infrastructure.Services;
@@ -17,7 +18,7 @@ public class JWTTokenService : IJWTTokenService
         _configuration = configuration;
     }
 
-    public string GenerateToken(IEnumerable<Claim> claims)
+    public string GenerateToken(IEnumerable<Claim> claims, TimeSpan expiry)
     {
         SymmetricSecurityKey securityKey = new(Encoding.UTF8.GetBytes(GetSecretKey()));
         SigningCredentials credentials = new(securityKey, SecurityAlgorithms.HmacSha256);
@@ -26,7 +27,7 @@ public class JWTTokenService : IJWTTokenService
             issuer: GetIssuer(),
             audience: GetAudience(),
             claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(30),
+            expires: DateTime.UtcNow.Add(expiry),
             signingCredentials: credentials
         );
 
@@ -38,4 +39,6 @@ public class JWTTokenService : IJWTTokenService
     public string GetIssuer() => _configuration["JWT:Issuer"] ?? throw new IssuerNotFoundException();
 
     public string GetSecretKey() => _configuration["JWT:SecretKey"] ?? throw new SecretKeyNotFoundException();
+
+    public string GenerateRefreshToken() => Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
 }

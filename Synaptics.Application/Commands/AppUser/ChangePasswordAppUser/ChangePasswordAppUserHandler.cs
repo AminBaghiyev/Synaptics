@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Synaptics.Application.Common;
+using Synaptics.Application.Interfaces.Services;
 using Synaptics.Domain.Enums;
 using System.Net;
 using System.Security.Claims;
@@ -13,11 +14,13 @@ public class ChangePasswordAppUserHandler : IRequestHandler<ChangePasswordAppUse
 {
     readonly UserManager<Entities.AppUser> _userManager;
     readonly IHttpContextAccessor _contextAccessor;
+    readonly IRedisService _redisService;
 
-    public ChangePasswordAppUserHandler(UserManager<Entities.AppUser> userManager, IHttpContextAccessor contextAccessor)
+    public ChangePasswordAppUserHandler(UserManager<Entities.AppUser> userManager, IHttpContextAccessor contextAccessor, IRedisService redisService)
     {
         _userManager = userManager;
         _contextAccessor = contextAccessor;
+        _redisService = redisService;
     }
 
     public async Task<Response> Handle(ChangePasswordAppUserCommand request, CancellationToken cancellationToken)
@@ -46,6 +49,8 @@ public class ChangePasswordAppUserHandler : IRequestHandler<ChangePasswordAppUse
                 StatusCode = HttpStatusCode.Unauthorized,
                 MessageCode = MessageCode.CredentialsWrong
             };
+
+        await _redisService.DeleteAllFromHashByKeyAsync($"{user.UserName}:refresh_tokens");
 
         return new Response
         {

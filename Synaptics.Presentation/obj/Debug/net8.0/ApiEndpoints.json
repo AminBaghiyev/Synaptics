@@ -697,6 +697,32 @@
   },
   {
     "ContainingType": "Synaptics.Presentation.Controllers.v1.UserController",
+    "Method": "GetAccessToken",
+    "RelativePath": "api/v1/user/accessToken",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Username",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Synaptics.Application.Common.Response",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Synaptics.Presentation.Controllers.v1.UserController",
     "Method": "ChangeCoverPhoto",
     "RelativePath": "api/v1/user/changeCoverPhoto",
     "HttpMethod": "PUT",
@@ -935,6 +961,32 @@
   },
   {
     "ContainingType": "Synaptics.Presentation.Controllers.v1.UserController",
+    "Method": "Logout",
+    "RelativePath": "api/v1/user/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "Synaptics.Application.Commands.AppUser.LogoutAppUser.LogoutAppUserCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Synaptics.Application.Common.Response",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Synaptics.Presentation.Controllers.v1.UserController",
     "Method": "Register",
     "RelativePath": "api/v1/user/register",
     "HttpMethod": "POST",
@@ -1135,6 +1187,63 @@
         "Name": "Offset",
         "Type": "System.UInt64",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Synaptics.Application.Common.Response",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Synaptics.Presentation.Controllers.v1.SessionController",
+    "Method": "Sessions",
+    "RelativePath": "api/v1/user/session/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Username",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Synaptics.Application.Common.Response",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Synaptics.Presentation.Controllers.v1.SessionController",
+    "Method": "EndSession",
+    "RelativePath": "api/v1/user/session/end",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "query",
+        "Type": "Synaptics.Application.Commands.AppUser.EndSessionAppUser.EndSessionAppUserCommand",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [

@@ -13,7 +13,8 @@ public class ChangePasswordAppUserValidator : AbstractValidator<ChangePasswordAp
 
         RuleFor(x => x.NewPassword)
             .NotEmpty().WithMessage("New password is required")
-            .MinimumLength(6).WithMessage("New password must be at least 6 characters long");
+            .MinimumLength(6).WithMessage("New password must be at least 6 characters long")
+            .NotEqual(x => x.OriginalPassword).WithMessage("Old password and new password cannot be the same");
 
         RuleFor(x => x.ConfirmPassword)
             .NotEmpty().WithMessage("New password must be confirmed")
